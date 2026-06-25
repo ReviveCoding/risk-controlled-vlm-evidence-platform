@@ -48,3 +48,7 @@ check_untyped_defs = true
 ignore_missing_imports = true
 warn_unused_ignores = true
 no_error_summary = true
+[[tool.mypy.overrides]]
+module = ["numpy", "numpy.*"]
+follow_imports = "skip"
+follow_imports_for_stubs = true

@@ -18,9 +18,9 @@ RUN useradd --create-home --uid 10001 appuser \
     && mkdir -p /app/state \
     && chown -R appuser:appuser /app/state
 WORKDIR /app
-COPY --from=builder /build/dist/*.whl /tmp/package.whl
-RUN python -m pip install --no-cache-dir /tmp/package.whl "fastapi>=0.137,<1" "uvicorn>=0.30,<1" \
-    && rm /tmp/package.whl
+COPY --from=builder /build/dist/ /tmp/dist/
+RUN python -m pip install --no-cache-dir /tmp/dist/*.whl "fastapi>=0.137,<1" "uvicorn>=0.30,<1" \
+    && rm -rf /tmp/dist
 USER appuser
 VOLUME ["/app/state"]
 EXPOSE 8000

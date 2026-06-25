@@ -76,7 +76,11 @@ def _pid_alive(pid: int) -> bool:
         still_active = 259
         access_denied = 5
 
-        kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        # These attributes exist only on Windows. Dynamic lookup keeps the
+        # Windows-only branch analyzable when mypy targets Linux.
+        win_dll = getattr(ctypes, "WinDLL")  # noqa: B009
+        get_last_error = getattr(ctypes, "get_last_error")  # noqa: B009
+        kernel32 = win_dll("kernel32", use_last_error=True)
         kernel32.OpenProcess.argtypes = [
             wintypes.DWORD,
             wintypes.BOOL,
@@ -99,7 +103,7 @@ def _pid_alive(pid: int) -> bool:
         if not handle:
             # Be conservative: do not reclaim a lock merely because this
             # process lacks permission to inspect a possibly-live process.
-            return ctypes.get_last_error() == access_denied
+            return get_last_error() == access_denied
 
         try:
             exit_code = wintypes.DWORD()
