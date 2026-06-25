@@ -1,0 +1,60 @@
+﻿{
+    "project_name":  "risk-controlled-vlm-evidence-platform",
+    "project_version":  "0.7.1",
+    "final_run_id":  "routing-v070-20260625-160040",
+    "evaluation_boundary":  "This compares a frozen handcrafted rule policy with a learned calibrated router on a synthetic, group-held-out operational-error benchmark. It does not claim real-world VLM accuracy improvement or production effectiveness.",
+    "dataset":  {
+                    "total_cases":  5760,
+                    "train_cases":  3600,
+                    "calibration_cases":  1080,
+                    "heldout_cases":  1080
+                },
+    "selected_operating_point":  {
+                                     "review_capacity_fraction":  0.2,
+                                     "baseline":  {
+                                                      "pr_auc":  0.588987,
+                                                      "auroc":  0.754384,
+                                                      "brier":  0.182003,
+                                                      "ece_10":  0.045477,
+                                                      "residual_weighted_risk":  660.0,
+                                                      "critical_error_capture":  0.415584,
+                                                      "false_greenlight_rate":  0.245675
+                                                  },
+                                     "candidate":  {
+                                                       "pr_auc":  0.645193,
+                                                       "auroc":  0.786731,
+                                                       "brier":  0.169981,
+                                                       "ece_10":  0.037905,
+                                                       "residual_weighted_risk":  593.0,
+                                                       "critical_error_capture":  0.489177,
+                                                       "false_greenlight_rate":  0.244875,
+                                                       "single_case_p95_ms":  1.86947
+                                                   }
+                                 },
+    "paired_bootstrap":  {
+                             "bootstrap_samples":  1000,
+                             "ci95_high":  -13.95,
+                             "ci95_low":  -133.0,
+                             "mean_candidate_minus_baseline":  -74.768
+                         },
+    "promotion":  {
+                      "checks":  {
+                                     "brier_improved":  true,
+                                     "candidate_single_case_p95_under_25ms":  true,
+                                     "critical_error_capture_nonregression":  true,
+                                     "false_greenlight_nonregression":  true,
+                                     "heldout_residual_weighted_risk_improved":  true,
+                                     "heldout_sample_size_at_least_500":  true,
+                                     "paired_bootstrap_ci_excludes_zero":  true,
+                                     "pr_auc_improved":  true,
+                                     "review_budget_respected":  true
+                                 },
+                      "claim_boundary":  "This compares a frozen handcrafted rule policy with a learned calibrated router on a synthetic, group-held-out operational-error benchmark. It does not claim real-world VLM accuracy improvement or production effectiveness.",
+                      "decision":  "PROMOTE_LEARNED_ROUTER"
+                  },
+    "local_qualification":  {
+                                "runner_exit_code":  0,
+                                "pytest_status":  "135 passed, 1 skipped",
+                                "artifact_manifest_validation":  "PASS"
+                            }
+}

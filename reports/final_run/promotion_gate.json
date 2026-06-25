@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "brier_improved": true,
+    "candidate_single_case_p95_under_25ms": true,
+    "critical_error_capture_nonregression": true,
+    "false_greenlight_nonregression": true,
+    "heldout_residual_weighted_risk_improved": true,
+    "heldout_sample_size_at_least_500": true,
+    "paired_bootstrap_ci_excludes_zero": true,
+    "pr_auc_improved": true,
+    "review_budget_respected": true
+  },
+  "claim_boundary": "This compares a frozen handcrafted rule policy with a learned calibrated router on a synthetic, group-held-out operational-error benchmark. It does not claim real-world VLM accuracy improvement or production effectiveness.",
+  "decision": "PROMOTE_LEARNED_ROUTER"
+}

@@ -1,0 +1,152 @@
+{
+  "exception_edge": {
+    "baseline": {
+      "probability": {
+        "auroc": 0.725333,
+        "brier": 0.182902,
+        "ece_10": 0.064484,
+        "log_loss": 0.5525,
+        "pr_auc": 0.48623
+      },
+      "routing": {
+        "accepted_coverage": 0.805556,
+        "available_minutes": 543.0,
+        "capacity_fraction": 0.2,
+        "critical_error_capture": 0.393939,
+        "false_greenlight_rate": 0.22069,
+        "residual_weighted_risk": 199.0,
+        "review_budget_respected": true,
+        "reviewed_count": 70,
+        "reviewed_fraction": 0.194444,
+        "unsafe_auto_decisions": 64,
+        "used_minutes": 543.0,
+        "weighted_error_capture": 0.395137
+      }
+    },
+    "candidate": {
+      "probability": {
+        "auroc": 0.768036,
+        "brier": 0.168894,
+        "ece_10": 0.061949,
+        "log_loss": 0.623924,
+        "pr_auc": 0.578544
+      },
+      "routing": {
+        "accepted_coverage": 0.822222,
+        "available_minutes": 543.0,
+        "capacity_fraction": 0.2,
+        "critical_error_capture": 0.484848,
+        "false_greenlight_rate": 0.222973,
+        "residual_weighted_risk": 181.0,
+        "review_budget_respected": true,
+        "reviewed_count": 64,
+        "reviewed_fraction": 0.177778,
+        "unsafe_auto_decisions": 66,
+        "used_minutes": 542.0,
+        "weighted_error_capture": 0.449848
+      }
+    },
+    "error_rate": 0.297222,
+    "n_cases": 360
+  },
+  "long_context_mixed": {
+    "baseline": {
+      "probability": {
+        "auroc": 0.737069,
+        "brier": 0.170792,
+        "ece_10": 0.062058,
+        "log_loss": 0.528966,
+        "pr_auc": 0.514393
+      },
+      "routing": {
+        "accepted_coverage": 0.797222,
+        "available_minutes": 534.0,
+        "capacity_fraction": 0.2,
+        "critical_error_capture": 0.377049,
+        "false_greenlight_rate": 0.209059,
+        "residual_weighted_risk": 181.0,
+        "review_budget_respected": true,
+        "reviewed_count": 73,
+        "reviewed_fraction": 0.202778,
+        "unsafe_auto_decisions": 60,
+        "used_minutes": 534.0,
+        "weighted_error_capture": 0.398671
+      }
+    },
+    "candidate": {
+      "probability": {
+        "auroc": 0.746665,
+        "brier": 0.163656,
+        "ece_10": 0.055256,
+        "log_loss": 0.602656,
+        "pr_auc": 0.578543
+      },
+      "routing": {
+        "accepted_coverage": 0.816667,
+        "available_minutes": 534.0,
+        "capacity_fraction": 0.2,
+        "critical_error_capture": 0.491803,
+        "false_greenlight_rate": 0.197279,
+        "residual_weighted_risk": 155.0,
+        "review_budget_respected": true,
+        "reviewed_count": 66,
+        "reviewed_fraction": 0.183333,
+        "unsafe_auto_decisions": 58,
+        "used_minutes": 534.0,
+        "weighted_error_capture": 0.48505
+      }
+    },
+    "error_rate": 0.280556,
+    "n_cases": 360
+  },
+  "mixed_ood": {
+    "baseline": {
+      "probability": {
+        "auroc": 0.775201,
+        "brier": 0.192314,
+        "ece_10": 0.074456,
+        "log_loss": 0.57353,
+        "pr_auc": 0.695168
+      },
+      "routing": {
+        "accepted_coverage": 0.805556,
+        "available_minutes": 527.4,
+        "capacity_fraction": 0.2,
+        "critical_error_capture": 0.317308,
+        "false_greenlight_rate": 0.348276,
+        "residual_weighted_risk": 334.0,
+        "review_budget_respected": true,
+        "reviewed_count": 70,
+        "reviewed_fraction": 0.194444,
+        "unsafe_auto_decisions": 101,
+        "used_minutes": 527.0,
+        "weighted_error_capture": 0.333333
+      }
+    },
+    "candidate": {
+      "probability": {
+        "auroc": 0.806593,
+        "brier": 0.177392,
+        "ece_10": 0.037744,
+        "log_loss": 0.590342,
+        "pr_auc": 0.720948
+      },
+      "routing": {
+        "accepted_coverage": 0.819444,
+        "available_minutes": 527.4,
+        "capacity_fraction": 0.2,
+        "critical_error_capture": 0.346154,
+        "false_greenlight_rate": 0.362712,
+        "residual_weighted_risk": 327.0,
+        "review_budget_respected": true,
+        "reviewed_count": 65,
+        "reviewed_fraction": 0.180556,
+        "unsafe_auto_decisions": 107,
+        "used_minutes": 526.0,
+        "weighted_error_capture": 0.347305
+      }
+    },
+    "error_rate": 0.433333,
+    "n_cases": 360
+  }
+}

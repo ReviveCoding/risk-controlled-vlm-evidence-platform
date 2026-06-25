@@ -1,0 +1,57 @@
+{
+  "bootstrap_samples": 1000,
+  "calibration_families": [
+    "compound_stale_scope",
+    "compound_missing_provenance",
+    "compound_prompt_conflict"
+  ],
+  "capacity_fraction": 0.2,
+  "feature_names": [
+    "evidence_count",
+    "missing_fraction",
+    "invalid_fraction",
+    "contradiction_slots",
+    "negative_slots",
+    "stale_fraction",
+    "scope_mismatch_fraction",
+    "checksum_failure_fraction",
+    "provenance_failure_fraction",
+    "prompt_injection_fraction",
+    "duplicate_fraction",
+    "supersession_depth",
+    "bbox_missing_fraction",
+    "approved_exception_count",
+    "criticality",
+    "expected_review_minutes",
+    "status_satisfied",
+    "status_not_satisfied",
+    "status_insufficient_evidence",
+    "status_conflict",
+    "status_not_applicable"
+  ],
+  "heldout_families": [
+    "exception_edge",
+    "long_context_mixed",
+    "mixed_ood"
+  ],
+  "label_generation": "independent hidden upstream-error mechanism based on observable raw evidence features; frozen risk_score excluded",
+  "library_versions": {
+    "numpy": "2.4.6",
+    "scikit_learn": "1.8.0"
+  },
+  "n_per_family": 360,
+  "project_version": "0.7.1",
+  "seed": 701,
+  "train_families": [
+    "fresh_clean",
+    "stale_evidence",
+    "scope_mismatch",
+    "missing_slot",
+    "conflict_pair",
+    "provenance_break",
+    "prompt_noise",
+    "duplicate_chain",
+    "low_grounding",
+    "high_criticality"
+  ]
+}

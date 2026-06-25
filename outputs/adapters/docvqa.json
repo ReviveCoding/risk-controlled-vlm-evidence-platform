@@ -1,0 +1,7 @@
+{
+  "archive": "DocVQA_test-00000,1-of-00006.7z",
+  "evaluation_caveat": "test shards do not contain gold answers; no scored QA claim is made",
+  "rows": 1730,
+  "schema_count": 1,
+  "shard_count": 2
+}

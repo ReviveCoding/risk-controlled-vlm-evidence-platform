@@ -1,0 +1,31 @@
+{
+  "excluded_for_leakage_control": [
+    "frozen_risk_score",
+    "upstream_error",
+    "group",
+    "gold_status"
+  ],
+  "feature_names": [
+    "evidence_count",
+    "missing_fraction",
+    "invalid_fraction",
+    "contradiction_slots",
+    "negative_slots",
+    "stale_fraction",
+    "scope_mismatch_fraction",
+    "checksum_failure_fraction",
+    "provenance_failure_fraction",
+    "prompt_injection_fraction",
+    "duplicate_fraction",
+    "supersession_depth",
+    "bbox_missing_fraction",
+    "approved_exception_count",
+    "criticality",
+    "expected_review_minutes",
+    "status_satisfied",
+    "status_not_satisfied",
+    "status_insufficient_evidence",
+    "status_conflict",
+    "status_not_applicable"
+  ]
+}

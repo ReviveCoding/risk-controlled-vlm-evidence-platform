@@ -1,0 +1,110 @@
+{
+  "latency": {
+    "batch_128": {
+      "batch_size": 128,
+      "p50_ms": 0.0404,
+      "p95_ms": 0.07232,
+      "p99_ms": 0.16236
+    },
+    "single_case": {
+      "batch_size": 1,
+      "p50_ms": 0.03815,
+      "p95_ms": 0.04853,
+      "p99_ms": 0.062127
+    }
+  },
+  "name": "frozen_handcrafted_risk_score_with_isotonic_calibration",
+  "probability_metrics": {
+    "auroc": 0.754384,
+    "brier": 0.182003,
+    "ece_10": 0.045477,
+    "log_loss": 0.551665,
+    "pr_auc": 0.588987
+  },
+  "risk_coverage": [
+    {
+      "accepted_coverage": 0.950926,
+      "available_minutes": 401.1,
+      "capacity_fraction": 0.05,
+      "critical_error_capture": 0.108225,
+      "false_greenlight_rate": 0.317429,
+      "residual_weighted_risk": 1011.0,
+      "review_budget_respected": true,
+      "reviewed_count": 53,
+      "reviewed_fraction": 0.049074,
+      "unsafe_auto_decisions": 326,
+      "used_minutes": 400.0,
+      "weighted_error_capture": 0.106101
+    },
+    {
+      "accepted_coverage": 0.903704,
+      "available_minutes": 802.2,
+      "capacity_fraction": 0.1,
+      "critical_error_capture": 0.199134,
+      "false_greenlight_rate": 0.296107,
+      "residual_weighted_risk": 901.0,
+      "review_budget_respected": true,
+      "reviewed_count": 104,
+      "reviewed_fraction": 0.096296,
+      "unsafe_auto_decisions": 289,
+      "used_minutes": 801.0,
+      "weighted_error_capture": 0.20336
+    },
+    {
+      "accepted_coverage": 0.802778,
+      "available_minutes": 1604.4,
+      "capacity_fraction": 0.2,
+      "critical_error_capture": 0.415584,
+      "false_greenlight_rate": 0.245675,
+      "residual_weighted_risk": 660.0,
+      "review_budget_respected": true,
+      "reviewed_count": 213,
+      "reviewed_fraction": 0.197222,
+      "unsafe_auto_decisions": 213,
+      "used_minutes": 1604.0,
+      "weighted_error_capture": 0.416446
+    },
+    {
+      "accepted_coverage": 0.703704,
+      "available_minutes": 2406.6,
+      "capacity_fraction": 0.3,
+      "critical_error_capture": 0.541126,
+      "false_greenlight_rate": 0.214474,
+      "residual_weighted_risk": 508.0,
+      "review_budget_respected": true,
+      "reviewed_count": 320,
+      "reviewed_fraction": 0.296296,
+      "unsafe_auto_decisions": 163,
+      "used_minutes": 2405.0,
+      "weighted_error_capture": 0.55084
+    },
+    {
+      "accepted_coverage": 0.611111,
+      "available_minutes": 3208.8,
+      "capacity_fraction": 0.4,
+      "critical_error_capture": 0.632035,
+      "false_greenlight_rate": 0.192424,
+      "residual_weighted_risk": 407.0,
+      "review_budget_respected": true,
+      "reviewed_count": 420,
+      "reviewed_fraction": 0.388889,
+      "unsafe_auto_decisions": 127,
+      "used_minutes": 3208.0,
+      "weighted_error_capture": 0.640141
+    }
+  ],
+  "routing": {
+    "accepted_coverage": 0.802778,
+    "available_minutes": 1604.4,
+    "capacity_fraction": 0.2,
+    "critical_error_capture": 0.415584,
+    "false_greenlight_rate": 0.245675,
+    "residual_weighted_risk": 660.0,
+    "review_budget_respected": true,
+    "reviewed_count": 213,
+    "reviewed_fraction": 0.197222,
+    "unsafe_auto_decisions": 213,
+    "used_minutes": 1604.0,
+    "weighted_error_capture": 0.416446
+  }
+}
