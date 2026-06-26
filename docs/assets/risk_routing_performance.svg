@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+<title id="title">Held-out risk-routing performance across review capacities</title>
+<desc id="desc">Comparison of a frozen handcrafted baseline and a learned calibrated router across five constrained human-review capacities.</desc>
+<style>
+.background { fill: #FFFFFF; }
+.title { fill: #111827; font: 700 28px Arial, Helvetica, sans-serif; }
+.subtitle { fill: #4B5563; font: 400 15px Arial, Helvetica, sans-serif; }
+.panel { fill: #F9FAFB; stroke: #D1D5DB; stroke-width: 1; rx: 14; }
+.panel-title { fill: #111827; font: 700 18px Arial, Helvetica, sans-serif; }
+.panel-subtitle { fill: #6B7280; font: 400 13px Arial, Helvetica, sans-serif; }
+.axis { fill: #4B5563; font: 400 12px Arial, Helvetica, sans-serif; }
+.axis-line { stroke: #9CA3AF; stroke-width: 1.2; }
+.grid { stroke: #E5E7EB; stroke-width: 1; }
+.grid-light { stroke: #F3F4F6; stroke-width: 1; }
+.baseline-line { fill: none; stroke: #6B7280; stroke-width: 3; stroke-dasharray: 7 5; }
+.candidate-line { fill: none; stroke: #2563EB; stroke-width: 3.5; }
+.baseline-dot { fill: #6B7280; }
+.candidate-dot { fill: #2563EB; }
+.legend { fill: #374151; font: 400 12px Arial, Helvetica, sans-serif; }
+.selected-line { stroke: #0F766E; stroke-width: 1.5; stroke-dasharray: 4 4; }
+.selected-label { fill: #0F766E; font: 700 12px Arial, Helvetica, sans-serif; }
+.callout { fill: #ECFDF5; stroke: #5EEAD4; stroke-width: 1; rx: 12; }
+.callout-label { fill: #065F46; font: 700 14px Arial, Helvetica, sans-serif; }
+.callout-value { fill: #064E3B; font: 700 24px Arial, Helvetica, sans-serif; }
+.callout-detail { fill: #065F46; font: 400 12px Arial, Helvetica, sans-serif; }
+</style>
+<rect width="1200" height="620" class="background"/>
+<text x="42.0" y="48.0" class="title" text-anchor="start">Held-out risk-routing performance across constrained review capacity</text>
+<text x="42.0" y="74.0" class="subtitle" text-anchor="start">Synthetic, group-held-out operational-error benchmark. Figure is generated from public final evidence.</text>
+<rect x="42.0" y="112.0" width="536.0" height="352.0" class="panel"/>
+<text x="66.0" y="143.0" class="panel-title" text-anchor="start">Residual weighted risk</text>
+<text x="66.0" y="163.0" class="panel-subtitle" text-anchor="start">Lower is better</text>
+<line x1="100.0" y1="410.0" x2="552.0" y2="410.0" class="grid"/>
+<text x="91.0" y="414.0" class="axis" text-anchor="end">0</text>
+<line x1="100.0" y1="356.4" x2="552.0" y2="356.4" class="grid"/>
+<text x="91.0" y="360.4" class="axis" text-anchor="end">250</text>
+<line x1="100.0" y1="302.7" x2="552.0" y2="302.7" class="grid"/>
+<text x="91.0" y="306.7" class="axis" text-anchor="end">500</text>
+<line x1="100.0" y1="249.1" x2="552.0" y2="249.1" class="grid"/>
+<text x="91.0" y="253.1" class="axis" text-anchor="end">750</text>
+<line x1="100.0" y1="195.5" x2="552.0" y2="195.5" class="grid"/>
+<text x="91.0" y="199.5" class="axis" text-anchor="end">1000</text>
+<line x1="100.0" y1="174.0" x2="100.0" y2="410.0" class="grid-light"/>
+<text x="100.0" y="434.0" class="axis" text-anchor="middle">5%</text>
+<line x1="164.6" y1="174.0" x2="164.6" y2="410.0" class="grid-light"/>
+<text x="164.6" y="434.0" class="axis" text-anchor="middle">10%</text>
+<line x1="293.7" y1="174.0" x2="293.7" y2="410.0" class="grid-light"/>
+<text x="293.7" y="434.0" class="axis" text-anchor="middle">20%</text>
+<line x1="422.9" y1="174.0" x2="422.9" y2="410.0" class="grid-light"/>
+<text x="422.9" y="434.0" class="axis" text-anchor="middle">30%</text>
+<line x1="552.0" y1="174.0" x2="552.0" y2="410.0" class="grid-light"/>
+<text x="552.0" y="434.0" class="axis" text-anchor="middle">40%</text>
+<line x1="100.0" y1="410.0" x2="552.0" y2="410.0" class="axis-line"/>
+<line x1="100.0" y1="174.0" x2="100.0" y2="410.0" class="axis-line"/>
+<line x1="293.7" y1="174.0" x2="293.7" y2="410.0" class="selected-line"/>
+<text x="293.7" y="165.0" class="selected-label" text-anchor="middle">20% selected point</text>
+<polyline points="100.0,193.1 164.6,216.7 293.7,268.4 422.9,301.0 552.0,322.7" class="baseline-line"/>
+<polyline points="100.0,197.8 164.6,229.6 293.7,282.8 422.9,317.3 552.0,340.1" class="candidate-line"/>
+<circle cx="100.0" cy="193.1" r="4.5" class="baseline-dot"/>
+<circle cx="164.6" cy="216.7" r="4.5" class="baseline-dot"/>
+<circle cx="293.7" cy="268.4" r="4.5" class="baseline-dot"/>
+<circle cx="422.9" cy="301.0" r="4.5" class="baseline-dot"/>
+<circle cx="552.0" cy="322.7" r="4.5" class="baseline-dot"/>
+<circle cx="100.0" cy="197.8" r="4.5" class="candidate-dot"/>
+<circle cx="164.6" cy="229.6" r="4.5" class="candidate-dot"/>
+<circle cx="293.7" cy="282.8" r="4.5" class="candidate-dot"/>
+<circle cx="422.9" cy="317.3" r="4.5" class="candidate-dot"/>
+<circle cx="552.0" cy="340.1" r="4.5" class="candidate-dot"/>
+<circle cx="66.0" cy="444.0" r="4.5" class="baseline-dot"/>
+<text x="76.0" y="448.0" class="legend" text-anchor="start">Frozen handcrafted baseline</text>
+<circle cx="386.0" cy="444.0" r="4.5" class="candidate-dot"/>
+<text x="396.0" y="448.0" class="legend" text-anchor="start">Learned calibrated router</text>
+<rect x="622.0" y="112.0" width="536.0" height="352.0" class="panel"/>
+<text x="646.0" y="143.0" class="panel-title" text-anchor="start">Critical-error capture</text>
+<text x="646.0" y="163.0" class="panel-subtitle" text-anchor="start">Higher is better</text>
+<line x1="680.0" y1="410.0" x2="1132.0" y2="410.0" class="grid"/>
+<text x="671.0" y="414.0" class="axis" text-anchor="end">0%</text>
+<line x1="680.0" y1="351.0" x2="1132.0" y2="351.0" class="grid"/>
+<text x="671.0" y="355.0" class="axis" text-anchor="end">20%</text>
+<line x1="680.0" y1="292.0" x2="1132.0" y2="292.0" class="grid"/>
+<text x="671.0" y="296.0" class="axis" text-anchor="end">40%</text>
+<line x1="680.0" y1="233.0" x2="1132.0" y2="233.0" class="grid"/>
+<text x="671.0" y="237.0" class="axis" text-anchor="end">60%</text>
+<line x1="680.0" y1="174.0" x2="1132.0" y2="174.0" class="grid"/>
+<text x="671.0" y="178.0" class="axis" text-anchor="end">80%</text>
+<line x1="680.0" y1="174.0" x2="680.0" y2="410.0" class="grid-light"/>
+<text x="680.0" y="434.0" class="axis" text-anchor="middle">5%</text>
+<line x1="744.6" y1="174.0" x2="744.6" y2="410.0" class="grid-light"/>
+<text x="744.6" y="434.0" class="axis" text-anchor="middle">10%</text>
+<line x1="873.7" y1="174.0" x2="873.7" y2="410.0" class="grid-light"/>
+<text x="873.7" y="434.0" class="axis" text-anchor="middle">20%</text>
+<line x1="1002.9" y1="174.0" x2="1002.9" y2="410.0" class="grid-light"/>
+<text x="1002.9" y="434.0" class="axis" text-anchor="middle">30%</text>
+<line x1="1132.0" y1="174.0" x2="1132.0" y2="410.0" class="grid-light"/>
+<text x="1132.0" y="434.0" class="axis" text-anchor="middle">40%</text>
+<line x1="680.0" y1="410.0" x2="1132.0" y2="410.0" class="axis-line"/>
+<line x1="680.0" y1="174.0" x2="680.0" y2="410.0" class="axis-line"/>
+<line x1="873.7" y1="174.0" x2="873.7" y2="410.0" class="selected-line"/>
+<text x="873.7" y="165.0" class="selected-label" text-anchor="middle">20% selected point</text>
+<polyline points="680.0,378.1 744.6,351.3 873.7,287.4 1002.9,250.4 1132.0,223.5" class="baseline-line"/>
+<polyline points="680.0,374.2 744.6,332.1 873.7,265.7 1002.9,224.8 1132.0,198.0" class="candidate-line"/>
+<circle cx="680.0" cy="378.1" r="4.5" class="baseline-dot"/>
+<circle cx="744.6" cy="351.3" r="4.5" class="baseline-dot"/>
+<circle cx="873.7" cy="287.4" r="4.5" class="baseline-dot"/>
+<circle cx="1002.9" cy="250.4" r="4.5" class="baseline-dot"/>
+<circle cx="1132.0" cy="223.5" r="4.5" class="baseline-dot"/>
+<circle cx="680.0" cy="374.2" r="4.5" class="candidate-dot"/>
+<circle cx="744.6" cy="332.1" r="4.5" class="candidate-dot"/>
+<circle cx="873.7" cy="265.7" r="4.5" class="candidate-dot"/>
+<circle cx="1002.9" cy="224.8" r="4.5" class="candidate-dot"/>
+<circle cx="1132.0" cy="198.0" r="4.5" class="candidate-dot"/>
+<circle cx="646.0" cy="444.0" r="4.5" class="baseline-dot"/>
+<text x="656.0" y="448.0" class="legend" text-anchor="start">Frozen handcrafted baseline</text>
+<circle cx="966.0" cy="444.0" r="4.5" class="candidate-dot"/>
+<text x="976.0" y="448.0" class="legend" text-anchor="start">Learned calibrated router</text>
+<rect x="42" y="504" width="1116" height="82" class="callout"/>
+<text x="70.0" y="532.0" class="callout-label" text-anchor="start">Selected operating point: 20% human-review capacity</text>
+<text x="70.0" y="562.0" class="callout-value" text-anchor="start">660 → 593</text>
+<text x="224.0" y="562.0" class="callout-detail" text-anchor="start">10.2% lower residual weighted risk</text>
+<text x="570.0" y="562.0" class="callout-value" text-anchor="start">41.6% → 48.9%</text>
+<text x="774.0" y="562.0" class="callout-detail" text-anchor="start">+7.4 pp critical-error capture</text>
+<text x="70.0" y="580.0" class="callout-detail" text-anchor="start">Paired bootstrap residual-risk difference: 95% CI [-133.00, -13.95]</text>
+</svg>

@@ -1,5 +1,10 @@
 # Risk-Controlled VLM Evidence Platform
 
+<!-- README_BADGES_START -->
+[![CI](https://github.com/ReviveCoding/risk-controlled-vlm-evidence-platform/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ReviveCoding/risk-controlled-vlm-evidence-platform/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/ReviveCoding/risk-controlled-vlm-evidence-platform/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/ReviveCoding/risk-controlled-vlm-evidence-platform/actions/workflows/codeql.yml)
+<!-- README_BADGES_END -->
+
 Version: 0.7.1
 
 A reliability-first platform for converting document and VLM evidence into risk-aware automated decisions. The system validates evidence integrity, estimates operational risk, routes high-risk cases to constrained human review, and publishes auditable experiment artifacts.
@@ -12,6 +17,32 @@ A reliability-first platform for converting document and VLM evidence into risk-
 - Applies predefined promotion gates for ranking quality, calibration, residual risk, critical-error capture, false-greenlight behavior, review budget, latency, and bootstrap uncertainty.
 - Publishes transactional run artifacts with checksum-based manifest validation.
 - Includes Windows-specific publication-lock and PID-liveness portability regression coverage.
+
+<!-- README_VISUALS_START -->
+## System Architecture
+
+```mermaid
+flowchart LR
+    A[Document and VLM evidence] --> B[Evidence integrity and provenance checks]
+    B --> C[Decision engine and mandatory-slot validation]
+    C --> D{Calibrated risk routing}
+    D -->|Low-risk case| E[Bounded automated decision]
+    D -->|High-risk case| F[Capacity-constrained human review]
+    E --> G[Promotion gates]
+    F --> G
+    G --> H[Transactional publication]
+    H --> I[Checksum-backed public evidence]
+```
+
+## Risk-Routing Performance Across Review Capacity
+
+![Held-out risk-routing performance across constrained review capacity](docs/assets/risk_routing_performance.svg)
+
+The SVG is generated deterministically from
+[`baseline_metrics.json`](reports/final_run/baseline_metrics.json),
+[`candidate_metrics.json`](reports/final_run/candidate_metrics.json), and
+[`public_evidence_summary.json`](reports/final_run/public_evidence_summary.json).
+<!-- README_VISUALS_END -->
 
 ## Held-Out Evaluation
 
