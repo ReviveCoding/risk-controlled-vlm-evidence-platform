@@ -120,7 +120,9 @@ def main() -> int:
     if args.output:
         args.output.parent.mkdir(parents=True, exist_ok=True)
         args.output.write_text(encoded, encoding="utf-8")
-    print(encoded, end="")
+    # Never emit a full repository audit to console logs. The report may contain
+    # sensitive repository metadata; callers can opt into a local file via --output.
+    print("repository-integrity: completed")
     return 0 if result["passed"] else 1
 
 

@@ -3,6 +3,8 @@ from __future__ import annotations
 import gzip
 import importlib.util
 import io
+import subprocess
+import sys
 import tarfile
 from pathlib import Path
 
@@ -127,3 +129,31 @@ def test_handoff_source_fingerprint_excludes_coverage_artifact(tmp_path):
     (tmp_path / ".coverage").write_bytes(b"runtime coverage database")
     after = builder.source_entries(tmp_path)
     assert before == after
+
+
+def test_repository_integrity_cli_does_not_emit_full_audit_to_stdout(tmp_path):
+    root = Path(__file__).resolve().parents[1]
+    scan_root = tmp_path / "scan-root"
+    scan_root.mkdir()
+
+    # Construct at runtime so this source file itself contains no token-shaped text.
+    token_like_value = "ghp_" + ("A" * 36)
+    (scan_root / "sample.txt").write_text(token_like_value, encoding="utf-8")
+
+    completed = subprocess.run(
+        [
+            sys.executable,
+            str(root / "scripts" / "repository_integrity.py"),
+            "--root",
+            str(scan_root),
+        ],
+        cwd=root,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+
+    assert completed.returncode == 1
+    assert completed.stdout == "repository-integrity: completed\n"
+    assert token_like_value not in completed.stdout
+    assert "secret_findings" not in completed.stdout
