@@ -1,0 +1,6 @@
+schema_version: "1.0"
+backend: local
+artifact_root: outputs
+registry_root: outputs/registry
+atomic_publication: true
+parquet_optional: true

@@ -1,0 +1,628 @@
+{
+  "base_commit": "5102201774ca75ac037c3cd983bc11cbd8fd7595",
+  "candidate_additions": [
+    "configs/backend_databricks.yaml",
+    "configs/backend_local.yaml",
+    "configs/data_contract.yaml",
+    "configs/experiment_contract.yaml",
+    "configs/experiment_test.yaml",
+    "configs/fault_matrix.yaml",
+    "configs/release_policy.yaml",
+    "configs/sec_fsds_contract.yaml",
+    "configs/sec_fsds_history_contract.yaml",
+    "configs/workloads/cfpb_untimely_response_test.yaml",
+    "configs/workloads/cfpb_untimely_response.yaml",
+    "examples/docvqa_risk_routing/contract-baseline-v0.2.1.json",
+    "examples/docvqa_risk_routing/EXPERIMENT_SPEC.json",
+    "examples/docvqa_risk_routing/README_risk_routing.md",
+    "examples/docvqa_risk_routing/requirements.lock.txt",
+    "examples/docvqa_risk_routing/scripts/common.py",
+    "examples/docvqa_risk_routing/scripts/evaluate_risk_router.py",
+    "examples/docvqa_risk_routing/scripts/inspect_risk_baseline.py",
+    "examples/docvqa_risk_routing/scripts/make_risk_split.py",
+    "examples/docvqa_risk_routing/scripts/record_prompt_rejection.py",
+    "examples/docvqa_risk_routing/scripts/run_vlm.py",
+    "examples/docvqa_risk_routing/scripts/train_risk_router.py",
+    "examples/docvqa_risk_routing/SHA256SUMS.txt",
+    "examples/docvqa_risk_routing/tests/test_metrics.py",
+    "examples/docvqa_risk_routing/tests/test_risk_routing.py",
+    "LICENSE",
+    "MODEL_FORGE_R_FINAL_REPORT.md",
+    "requirements-lock.txt",
+    "resources/jobs.yml",
+    "src/model_forge/__init__.py",
+    "src/model_forge/artifacts.py",
+    "src/model_forge/backends/__init__.py",
+    "src/model_forge/backends/base.py",
+    "src/model_forge/backends/local.py",
+    "src/model_forge/cli.py",
+    "src/model_forge/contracts/__init__.py",
+    "src/model_forge/contracts/models.py",
+    "src/model_forge/contracts/sec_fsds.py",
+    "src/model_forge/contracts/workload.py",
+    "src/model_forge/data/__init__.py",
+    "src/model_forge/data/acquisition.py",
+    "src/model_forge/data/cfpb.py",
+    "src/model_forge/data/fixture.py",
+    "src/model_forge/data/out_of_core.py",
+    "src/model_forge/data/sec_fsds.py",
+    "src/model_forge/data/sec_label_audit.py",
+    "src/model_forge/data/sec_linkage_diagnostic.py",
+    "src/model_forge/data/validation.py",
+    "src/model_forge/databricks_entrypoint.py",
+    "src/model_forge/evaluation/__init__.py",
+    "src/model_forge/evaluation/metrics.py",
+    "src/model_forge/features/__init__.py",
+    "src/model_forge/features/asof.py",
+    "src/model_forge/migration/__init__.py",
+    "src/model_forge/migration/parity.py",
+    "src/model_forge/monitoring/__init__.py",
+    "src/model_forge/monitoring/drift.py",
+    "src/model_forge/pipeline.py",
+    "src/model_forge/qualification/__init__.py",
+    "src/model_forge/qualification/faults.py",
+    "src/model_forge/qualification/policies.py",
+    "src/model_forge/registry/__init__.py",
+    "src/model_forge/registry/local.py",
+    "src/model_forge/reporting/__init__.py",
+    "src/model_forge/reporting/report.py",
+    "src/model_forge/resources/__init__.py",
+    "src/model_forge/resources/configs/__init__.py",
+    "src/model_forge/resources/configs/backend_databricks.yaml",
+    "src/model_forge/resources/configs/backend_local.yaml",
+    "src/model_forge/resources/configs/data_contract.yaml",
+    "src/model_forge/resources/configs/experiment_contract.yaml",
+    "src/model_forge/resources/configs/experiment_test.yaml",
+    "src/model_forge/resources/configs/fault_matrix.yaml",
+    "src/model_forge/resources/configs/release_policy.yaml",
+    "src/model_forge/resources/configs/sec_fsds_contract.yaml",
+    "src/model_forge/resources/configs/sec_fsds_history_contract.yaml",
+    "src/model_forge/resources/configs/workloads/__init__.py",
+    "src/model_forge/resources/configs/workloads/cfpb_untimely_response_test.yaml",
+    "src/model_forge/resources/configs/workloads/cfpb_untimely_response.yaml",
+    "src/model_forge/specialty/__init__.py",
+    "src/model_forge/specialty/adaptive_boundary.py",
+    "src/model_forge/specialty/reference_health.py",
+    "src/model_forge/utils.py",
+    "src/model_forge/workloads/__init__.py",
+    "src/model_forge/workloads/models.py",
+    "src/model_forge/workloads/qwen_embeddings.py",
+    "tests/test_artifact_contract.py",
+    "tests/test_cli_dispatch.py",
+    "tests/test_contracts_and_data.py",
+    "tests/test_e2e.py",
+    "tests/test_metrics.py",
+    "tests/test_out_of_core.py",
+    "tests/test_registry_and_migration.py",
+    "tests/test_reliability_edges.py",
+    "tests/test_replay_reproducibility.py",
+    "tests/test_safe_input_io.py",
+    "tests/test_sec_fsds.py",
+    "tests/test_sec_label_audit.py",
+    "tests/test_sec_linkage_diagnostic.py",
+    "tests/test_specialty_and_policies.py",
+    "tests/test_split_role_isolation.py"
+  ],
+  "candidate_files_transformed": [
+    {
+      "candidate_sha256": "d2d0baff757e62d57b51c4c24ea70e107fa55558d15e56cad4347a6720d0813b",
+      "integrated_sha256": "b677050f2a0e49cc021eac59297d6821dbca02a922c0fc52dfbbc6796140ef67",
+      "path": ".gitattributes",
+      "reason": "semantic reconciliation with origin/main"
+    },
+    {
+      "candidate_sha256": "3c200fd2349d7c697644c1aee852be45209b660bb8788801b5477bf6f69c7b86",
+      "integrated_sha256": "48e544dc65a609778075fce81ce876c425f487140aaa28fdd481a779ad504192",
+      "path": ".gitignore",
+      "reason": "semantic reconciliation with origin/main"
+    },
+    {
+      "candidate_sha256": "0e28a519432b1d5bf92fa5a47165714962aea57541a804b3458db1a5727c18f6",
+      "integrated_sha256": "c6b3e6cb1ff47633bece04981e33de9323622eec4dce888731eaf9972664e703",
+      "path": "examples/docvqa_risk_routing/README_risk_routing.md",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "41f145a8386da0eb144c58cd346addc5432fddcc39371815cf7fae12d3c391c3",
+      "integrated_sha256": "af686efcd22f8cc4c71d0491ce105324546801f3542f4cec08012a82b74c0d91",
+      "path": "examples/docvqa_risk_routing/scripts/common.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "315a5a963a7e4d449cb51db668019da8f482a5622523a48a750fb02231cb6363",
+      "integrated_sha256": "96c411d3430c693a5a23cc960988859bd3a742277a26d78a75db0ee61997f7f5",
+      "path": "examples/docvqa_risk_routing/scripts/evaluate_risk_router.py",
+      "reason": "strict Ruff integration plus Linux atomic renameat2 non-overwrite portability"
+    },
+    {
+      "candidate_sha256": "377cf47ce3d2bce0507579cc8f4ab69b1575574da66c0ce12eafaa7bb6379327",
+      "integrated_sha256": "e31583a22d40327a2b36aa55e813202e9e91aba04cc365755f86ad39a5987b04",
+      "path": "examples/docvqa_risk_routing/scripts/make_risk_split.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "2152f06bce68670b0a21e1d3d792d6fe59ff82bbfd74e7d5f7b867dc9ef57efe",
+      "integrated_sha256": "cbcbc58d7559e137a9c4f004b73d4096f4dbc0e757fe790ca5e5696f7128be4f",
+      "path": "examples/docvqa_risk_routing/scripts/record_prompt_rejection.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "7c6b34d357fea827a076708b85805670e3deb4ed8864982977ce0e3eb4c57fbd",
+      "integrated_sha256": "166b6ba1fa1e8a3d7fb4c12c427fa55465847f74d9ba5e41e3a44a6ab50c7c9b",
+      "path": "examples/docvqa_risk_routing/scripts/run_vlm.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "158e5036fbb3c7cc9ca563e9760bc0daf70fb54466e17e662db0e51ebbed5202",
+      "integrated_sha256": "f4898ecbe2540884a9c59e6d6a0faea17594117e00fa3d72e00d71ee15cb49ad",
+      "path": "examples/docvqa_risk_routing/scripts/train_risk_router.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "73d11bbbbc406b196902dcc3f81fd9ab51ee29e46918b1261d9299412ac866c4",
+      "integrated_sha256": "2197998db34b3e218bc03d58692aa6963d67ef59dd3386ca171540375b0d8634",
+      "path": "examples/docvqa_risk_routing/SHA256SUMS.txt",
+      "reason": "regenerated after integration formatting and Linux transaction portability correction"
+    },
+    {
+      "candidate_sha256": "38a8bbc32cdc19961192a2aafcafd1c6bab2a0f596b195ba2b0f76975371f52c",
+      "integrated_sha256": "a232e2f70e46f25a5f6e89c6929c07154009ae4ee79284febdf46780f2a2b31e",
+      "path": "examples/docvqa_risk_routing/tests/test_risk_routing.py",
+      "reason": "strict Ruff integration plus Windows long-name/8.3 path identity portability"
+    },
+    {
+      "candidate_sha256": "2a979b44019fe7d73e0e6db8d0ae51f9f18903c4a9347ceba252dadf55ebdd8a",
+      "integrated_sha256": "1ce2ab68bed396e96af5153f6a693587b85f082675c88b90f45eab222903c1fd",
+      "path": "MODEL_FORGE_R_FINAL_REPORT.md",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "f24d8be595836cec897b486d7521048655524c343c1f1d691e8f99b46af536ef",
+      "integrated_sha256": "afdb27531121339988a8d16ed44408a68ac0713ce68db53846761d4f379260f5",
+      "path": "pyproject.toml",
+      "reason": "semantic reconciliation with origin/main"
+    },
+    {
+      "candidate_sha256": "7e179d5d08afc4998130e1fb97938ad6266891fe0f89fdd5e18b0943af7b21b0",
+      "integrated_sha256": "5768737c4c0ef903e1b8c35d5e3a2949a6c0a9f6c5fa9678473b4e482eb253b4",
+      "path": "README.md",
+      "reason": "semantic reconciliation with origin/main"
+    },
+    {
+      "candidate_sha256": "a11d7eb9add9cd99c275c5e7b41cad3c15cd29bc759b2b92ab4141bbda74c7bb",
+      "integrated_sha256": "d0ed0739ee5e471d939d1b8fe478e12a0998807fc45f732f64b4704549952418",
+      "path": "requirements-lock.txt",
+      "reason": "dependency-lock reconciliation with preserved base and validated environment"
+    },
+    {
+      "candidate_sha256": "69cf06b3d6145a4a89432549fd5b6d562e3605456404177da542bb5f0ea8582b",
+      "integrated_sha256": "28a0e7c7e7b179e5030fbfea7df0af3cca15ba623b358811682ec92f3b437d67",
+      "path": "src/model_forge/artifacts.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "c5e5e8d096296fcbb399453b8d7836787a58d5d86df7093d1070b82adfbdf5a6",
+      "integrated_sha256": "1b7d524ac610052eb09c45fd0ef3b08a63a7cb040e80f0bb19e40b505e22c5a9",
+      "path": "src/model_forge/backends/local.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "c7eb1e043a05fe201f7205523640b4369e4484c0a4a50f86dd68535798db8a9a",
+      "integrated_sha256": "c375e37e363f9545e3f2fe4ee9f4ffde4061b0e540706305c3614f927ac88ac9",
+      "path": "src/model_forge/cli.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "304ea8cd9d48400f83cfd1407c9f8674cdeb227861994db44a98175b6824dc26",
+      "integrated_sha256": "0d4d65cb13c00fd7189784bc0284a6d9d50c9101700b2e10af3664cb2a1e1e2b",
+      "path": "src/model_forge/contracts/models.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "567e5ba122f41eed7c8a7918bef5a7b70574bd702b3877dc9e1ef02ff227e5dd",
+      "integrated_sha256": "7a57b230b32bc5062ab2435a3e7efbfa5db3763ae1e5560c8be60cc8de645fc3",
+      "path": "src/model_forge/contracts/sec_fsds.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "dcaeb62d1fd5e815903f231e87717338c5109e6317c78dccba68919bbd81dd48",
+      "integrated_sha256": "61cc000263f434fdf41cc54434e31ade3153e76669240d78d04f493e6b74a8cd",
+      "path": "src/model_forge/contracts/workload.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "2b915bd536c19b1992ff49f1e45c8e81d1da532ded3f310e807a9a3926d3ab17",
+      "integrated_sha256": "30ae81353d2f956f146ca8a49434a5a2672eb49289483c3f011986d6e0022bba",
+      "path": "src/model_forge/data/acquisition.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "fd419a16884f9fd46fb3e968247bb0245dedf0d73eb5322454aea7ead6c91bb4",
+      "integrated_sha256": "bf89386f5a90e8ae7788f685641a1955bdf91e64348a324d04ac7a47a6a80c44",
+      "path": "src/model_forge/data/fixture.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "909e648e64c000c16994588c3fdf2cadb1ebc8c63d018ab555ab2ff7da9e0c51",
+      "integrated_sha256": "568ab394437c212bacb5e4104c7a724bf7e80f2487958d3f56923c55e135fc76",
+      "path": "src/model_forge/data/out_of_core.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "5b7e2040c1c66b22f1a86bc8661876398b999b9b8e0b64b1343f903fecefd517",
+      "integrated_sha256": "f57adfc7dabf227686fabc3b76eeff69fc1e3cb06e8ed4b5644123c35b419e5b",
+      "path": "src/model_forge/data/sec_fsds.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "7fd0c0f0e2019b8706965e96631a84ff5a7669026e38a814e28c89a8759e6343",
+      "integrated_sha256": "c185c0d0dad4fbe59a31568e54c234a0102f9c049854c3c0da872e3dd389a3e5",
+      "path": "src/model_forge/data/sec_label_audit.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "dddf30da60e91f74c0187253b87dd33ef6c78d8efdbc29a40669253915f030d9",
+      "integrated_sha256": "db7d558f755b6b50a59f4b2a734fc9c36124996455ee3846631911f51b720cbe",
+      "path": "src/model_forge/data/sec_linkage_diagnostic.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "b698bbc73f6c85da53ab496b657e8f68f570df3127cbcc58562cfe4891b6454a",
+      "integrated_sha256": "ba86073a5cd8f1c03f4c60c0a83f1ff055db93dbc1fb80afd759a364e6a877b4",
+      "path": "src/model_forge/data/validation.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "f50f2442acbce827db8860a0d54d0550be034284d0cc28bfd4171c6840d3ff52",
+      "integrated_sha256": "ca69a16d5f4f51d2bcfcf275902b6faf24b0ddbdab5c5303269d55114d9dd2f6",
+      "path": "src/model_forge/evaluation/metrics.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "abbe2ce5701e420a9fc53387a4da6155f4dbb523e591a769788a34242c47a33e",
+      "integrated_sha256": "977a05d24c6e499a5bcec369d56fc6c25902a6a1c0487010971e1ff956c015ef",
+      "path": "src/model_forge/features/asof.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "7be61848bbcdebea6e728d830d79c5c42003c589b3f61c3bdfb8addcf81f112e",
+      "integrated_sha256": "aafaba72308cf7137560baaa689222d61186e3e923771c1a6d1d02d0299ddf6f",
+      "path": "src/model_forge/pipeline.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "4b615085773e02a520a7cd24793bb1ee6aeec11327ecfae57595e7b17cb5d262",
+      "integrated_sha256": "f401bce7d0ba8c98f48919b92692ea6e0188c97c2410868aa85d8419664bd168",
+      "path": "src/model_forge/qualification/faults.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "31a76989d10538e8eb185a3e753c318b43cfe90c70050d10fdfe5c5def16a83a",
+      "integrated_sha256": "9eb22b0913fd29d54674fc57c5eceab0d162fe4a391959163e474ea82d415691",
+      "path": "src/model_forge/qualification/policies.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "b905c917ac3565a475566e764973248036abcfa573279a726ab1d7a37089cc39",
+      "integrated_sha256": "6f699cdde8a3572ad603fdf8aaf262ae20e999a2c16716c7eae8fa173786ca52",
+      "path": "src/model_forge/registry/local.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "3d2851408947e7197bb3b0b3fca635775885fa3c85175580397aa40def12fa5f",
+      "integrated_sha256": "9dd0a1d64b078c3343443eca58d3458fa85e4babc74d6ebfce93c56a2324097f",
+      "path": "src/model_forge/reporting/report.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "06f0d5a4792e12e96f10a44f0cf16315a0a84be8912cc7c3e54754d40acb0a17",
+      "integrated_sha256": "693953eac014b6141c61d26499f5b576c7c0d22cf4d3dbce47cd3b3d6269ab82",
+      "path": "src/model_forge/resources/__init__.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "6b6d2d9bda7503733e05a5da324f2c74190c7b8a5d79b4e3393ffdd011322707",
+      "integrated_sha256": "65efba27acc1e5ed6934576afe66b058166152aceedb92286d53a71a7ca0e819",
+      "path": "src/model_forge/specialty/adaptive_boundary.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "6b64db9983c6423d4301b950d1435dd7b094a1890885fa7d3bf1b6a9bcbd86b7",
+      "integrated_sha256": "d03131de80553e03e21ea3927029a4cf070959fc653838981ae5ed59dfca2dc1",
+      "path": "src/model_forge/specialty/reference_health.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "42eaf1b6355f76523f148636d1e3f12e121cea4c2598a6532fd2a7415e67a0ba",
+      "integrated_sha256": "63565dfe3621a9d24b4a0b4ab0f1e4d985b829a9d8f43ea9e2691f63b0e1b487",
+      "path": "src/model_forge/utils.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "50dde952cf1301c757d366e8b809b43cc2e7af79639b961191914db70c27fb58",
+      "integrated_sha256": "a49d9fd9f86faa6a60326996b94148c0be8465778e11f0dc9ff27802bc12a3d6",
+      "path": "src/model_forge/workloads/models.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "3878138ead89bd94b25bc8b5c380f67f4b7a13ea6adb9744bf7100d4df88b7bc",
+      "integrated_sha256": "e5faca7cc1b18f5ff76fc30c05bf249a83a6e201a7ca8df75799ed5e42819348",
+      "path": "src/model_forge/workloads/qwen_embeddings.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "6d3426ff14f7fd2d632018643f2e8e6bca72c3161954279b9cac7e16477072c8",
+      "integrated_sha256": "7f3252bd43e688d496b412aca5a7f455cae92ee962d7a99ef0810a09e75e6cb4",
+      "path": "tests/test_artifact_contract.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "9afe10624e5da126a9ee1fe0bf6d4de87d0ad17029af99967109bb58fe5c0d0c",
+      "integrated_sha256": "2c4bd168e828053ddcec914346cb5c4c5bfd0c18f0cf193e6d000504edb19cff",
+      "path": "tests/test_cli_dispatch.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "9533fd238a3b3250842d9ddaecfc86b61ef68028daa6b36be2887952da6151b2",
+      "integrated_sha256": "0edcb8aee3e2bd45719f17975b55db1cd7a99a14052b8d08c1e36ea74a9b46e1",
+      "path": "tests/test_contracts_and_data.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "86a9095373123402ae7cfae2b4fce41eee7a4cca1886e0762d9c83236eeacb70",
+      "integrated_sha256": "28fa2eb517962dbea6439a0eb08cb4fbdb5f5e62ce02861d77e6540cb47bfb90",
+      "path": "tests/test_e2e.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "acc55ab7de4c65f2bf58fd4eed502c2edf744f7d8d9c9888c2597a2c173038d7",
+      "integrated_sha256": "9245f9c7da934a1706e57580aa5d0a7bb9c94dbb5986e676e016ac62d7f04620",
+      "path": "tests/test_out_of_core.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "7f642b927747a17232366ac56ec0ed22e1fca52c71b5239d15534518619e38ee",
+      "integrated_sha256": "39ae7b411bdd1987bc1dbbf86d991e598fa7aea0eba4c4006bf29e5fb28e850e",
+      "path": "tests/test_registry_and_migration.py",
+      "reason": "strict Ruff integration plus explicit Windows ACL host-policy availability handling"
+    },
+    {
+      "candidate_sha256": "3c18b40d454512e609d4d6273112370d99fa27dd459602bf5fab530ddf6e3659",
+      "integrated_sha256": "388d47cdbf1a04ff0e72f7574ad0b6d40ab2a8d69ef6b2866e73fccfd55e6d85",
+      "path": "tests/test_reliability_edges.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "130d31c729e45169cb49480480f8ce3a0d3a1957ce0c784f51d4a81a8f4cb63e",
+      "integrated_sha256": "3603b077a1690981b5dd2f590f49feb6ff4a0c670663d19464c7a4acbaf249a0",
+      "path": "tests/test_sec_fsds.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "858c773041995c4ddbeb960619ea6a5d424d5937dcf62b13eff4437b94962082",
+      "integrated_sha256": "901e0b8de39dca49208388c9522ca21c66c89f3769b01c6b2b75990bb132ef13",
+      "path": "tests/test_specialty_and_policies.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    },
+    {
+      "candidate_sha256": "84916e88d22ab8080ccfee33642fd5c68ba09148819c236e76bccd6e6bdcbc85",
+      "integrated_sha256": "2a4081135b1e6ee86c7744f68de026ae22dc22a4d1a538cecc4670efdfeba476",
+      "path": "tests/test_split_role_isolation.py",
+      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+    }
+  ],
+  "candidate_inventory_sha256": "ae88833d614e88c2ba5910810a47883535264aee51436be5422701b810bb26bf",
+  "counts": {
+    "base_tracked": 86,
+    "candidate_additions": 101,
+    "candidate_allowlist": 105,
+    "candidate_files_transformed": 51,
+    "expected_final_tracked": 189,
+    "integration_generated_files": 2,
+    "overlap": 4,
+    "preserved_base_unchanged": 73,
+    "proposed_deletions": 0,
+    "reconciled_base": 9
+  },
+  "genuine_duplicates": [
+    {
+      "package_data_path": "src/model_forge/resources/configs/backend_databricks.yaml",
+      "purpose": "Repository-readable configuration plus identical packaged runtime resource",
+      "repository_path": "configs/backend_databricks.yaml",
+      "sha256": "b6692daa479caf223903f6e19bd404f87acb844d47cf5ff44545f7a82069c952"
+    },
+    {
+      "package_data_path": "src/model_forge/resources/configs/backend_local.yaml",
+      "purpose": "Repository-readable configuration plus identical packaged runtime resource",
+      "repository_path": "configs/backend_local.yaml",
+      "sha256": "8f724f4494f7ab1c05e47cd8f4e44d991e4eb9d434fda463b51c0c56478377a0"
+    },
+    {
+      "package_data_path": "src/model_forge/resources/configs/data_contract.yaml",
+      "purpose": "Repository-readable configuration plus identical packaged runtime resource",
+      "repository_path": "configs/data_contract.yaml",
+      "sha256": "9ceacf91a94f9a9b542a850275df6bd5848c833a67bf60e433a2c18d0a72da72"
+    },
+    {
+      "package_data_path": "src/model_forge/resources/configs/experiment_contract.yaml",
+      "purpose": "Repository-readable configuration plus identical packaged runtime resource",
+      "repository_path": "configs/experiment_contract.yaml",
+      "sha256": "050a3bd0d56199378654082f48eea07609b632d9aa9b5dd327f0fc4d78375c5d"
+    },
+    {
+      "package_data_path": "src/model_forge/resources/configs/experiment_test.yaml",
+      "purpose": "Repository-readable configuration plus identical packaged runtime resource",
+      "repository_path": "configs/experiment_test.yaml",
+      "sha256": "db005cc58920c7a1b2a693b3a23259c52591ce04720ac32d622581039b879096"
+    },
+    {
+      "package_data_path": "src/model_forge/resources/configs/fault_matrix.yaml",
+      "purpose": "Repository-readable configuration plus identical packaged runtime resource",
+      "repository_path": "configs/fault_matrix.yaml",
+      "sha256": "c30506f8052149527b1b0127c9f5187bd9904b9949ff59f85ddf28d8f355e6c9"
+    },
+    {
+      "package_data_path": "src/model_forge/resources/configs/release_policy.yaml",
+      "purpose": "Repository-readable configuration plus identical packaged runtime resource",
+      "repository_path": "configs/release_policy.yaml",
+      "sha256": "ed1523cb51865d257e3178bb538bc08bf3e5ed75a0fea44e378fb7bc4e25d203"
+    },
+    {
+      "package_data_path": "src/model_forge/resources/configs/sec_fsds_contract.yaml",
+      "purpose": "Repository-readable configuration plus identical packaged runtime resource",
+      "repository_path": "configs/sec_fsds_contract.yaml",
+      "sha256": "10110ca7642267fc34651b3b923113da1b6eedd96b3ec822343ae9a51632b629"
+    },
+    {
+      "package_data_path": "src/model_forge/resources/configs/sec_fsds_history_contract.yaml",
+      "purpose": "Repository-readable configuration plus identical packaged runtime resource",
+      "repository_path": "configs/sec_fsds_history_contract.yaml",
+      "sha256": "5d69947c4e7a3a98853ec7c25979899ff4c4342b5795460f88ce61acbc90abe3"
+    },
+    {
+      "package_data_path": "src/model_forge/resources/configs/workloads/cfpb_untimely_response_test.yaml",
+      "purpose": "Repository-readable configuration plus identical packaged runtime resource",
+      "repository_path": "configs/workloads/cfpb_untimely_response_test.yaml",
+      "sha256": "00de8369ddaab4307815b037d486c7f94a1ab2a2bb8c4554b25a5cdbfc02e505"
+    },
+    {
+      "package_data_path": "src/model_forge/resources/configs/workloads/cfpb_untimely_response.yaml",
+      "purpose": "Repository-readable configuration plus identical packaged runtime resource",
+      "repository_path": "configs/workloads/cfpb_untimely_response.yaml",
+      "sha256": "0a8eb3202b5c9748701e90c2b02a30a6556823f63f4d894761fc4083b6589cdd"
+    }
+  ],
+  "overlapping_paths": [
+    {
+      "decision": "semantic union: preserve base binary evidence classification and add shell LF normalization",
+      "path": ".gitattributes"
+    },
+    {
+      "decision": "semantic union: preserve public synthetic evidence exceptions and add publication safety exclusions",
+      "path": ".gitignore"
+    },
+    {
+      "decision": "integrated overview preserving synthetic results and adding DocVQA Phase B/C/D claim boundaries",
+      "path": "README.md"
+    },
+    {
+      "decision": "preserve base project identity, API and dataset extras, Python matrix, and strict tooling; add model_forge package, CLI, dependencies, and package data",
+      "path": "pyproject.toml"
+    }
+  ],
+  "preserved_base_files": [
+    ".dockerignore",
+    ".github/dependabot.yml",
+    ".github/workflows/codeql.yml",
+    "CHANGELOG.md",
+    "constraints/qualification-py313-linux.txt",
+    "Dockerfile",
+    "docs/ARCHITECTURE.md",
+    "docs/assets/risk_routing_performance.svg",
+    "docs/DATA_CARD.md",
+    "docs/improvement_report.md",
+    "docs/known_limitations.md",
+    "docs/LEARNED_ROUTING_EXPERIMENT.md",
+    "docs/operations.md",
+    "docs/release_qualification.md",
+    "docs/troubleshooting.md",
+    "EXPERIMENT_HANDOFF.md",
+    "outputs/adapters/docvqa.json",
+    "outputs/adapters/funsd.json",
+    "outputs/adapters/kleister.json",
+    "RELEASE_NOTES.md",
+    "reports/final_run/baseline_metrics.json",
+    "reports/final_run/candidate_metrics.json",
+    "reports/final_run/experiment_config.json",
+    "reports/final_run/feature_schema.json",
+    "reports/final_run/model_card.md",
+    "reports/final_run/per_group_metrics.json",
+    "reports/final_run/promotion_gate.json",
+    "reports/final_run/public_evidence_summary.json",
+    "reports/final_run/README.md",
+    "reports/final_run/SHA256SUMS.txt",
+    "RUN_LEARNED_RISK_ROUTING.ps1",
+    "scripts/build_operational_manifests.py",
+    "scripts/build_qualification_manifest.py",
+    "scripts/build_release_candidate_handoff.py",
+    "scripts/build_release_manifest.py",
+    "scripts/create_release_zip.py",
+    "scripts/generate_readme_visuals.py",
+    "scripts/normalize_sdist.py",
+    "scripts/qualify_local.py",
+    "scripts/qualify_runtime.py",
+    "scripts/repository_integrity.py",
+    "SECURITY.md",
+    "src/control_evidence/__init__.py",
+    "src/control_evidence/api.py",
+    "src/control_evidence/archive_adapters.py",
+    "src/control_evidence/cli.py",
+    "src/control_evidence/decision.py",
+    "src/control_evidence/learned_routing.py",
+    "src/control_evidence/metrics.py",
+    "src/control_evidence/pipeline.py",
+    "src/control_evidence/provenance.py",
+    "src/control_evidence/publication.py",
+    "src/control_evidence/review.py",
+    "src/control_evidence/schemas.py",
+    "src/control_evidence/synthetic.py",
+    "src/control_evidence/vlm.py",
+    "tests/test_api.py",
+    "tests/test_archive_adapters.py",
+    "tests/test_cli.py",
+    "tests/test_decision.py",
+    "tests/test_learned_routing.py",
+    "tests/test_mutation_properties.py",
+    "tests/test_pipeline_integration.py",
+    "tests/test_provenance.py",
+    "tests/test_publication.py",
+    "tests/test_qwen_contract.py",
+    "tests/test_readme_visuals.py",
+    "tests/test_release_tooling.py",
+    "tests/test_review_qualification.py",
+    "tests/test_risk_gate_exact.py",
+    "tests/test_schema_integrity.py",
+    "tests/test_synthetic_pipeline.py",
+    "tests/test_validation_harness.py"
+  ],
+  "proposed_deletions": [],
+  "reconciled_base_files": [
+    {
+      "decision": "focused CI or local-qualification extension to validate both code areas without weakening existing gates",
+      "path": ".github/workflows/ci.yml"
+    },
+    {
+      "decision": "focused CI or local-qualification extension to validate both code areas without weakening existing gates",
+      "path": "Makefile"
+    },
+    {
+      "decision": "focused CI or local-qualification extension to validate both code areas without weakening existing gates",
+      "path": "scripts/full_pipeline_validation.py"
+    },
+    {
+      "decision": "focused CI or local-qualification extension to validate both code areas without weakening existing gates",
+      "path": "scripts/qualify_local.ps1"
+    },
+    {
+      "decision": "focused CI or local-qualification extension to validate both code areas without weakening existing gates",
+      "path": "scripts/qualify_local.sh"
+    },
+    {
+      "decision": "typing-only optional-transformers bridge plus supported PyMuPDF import; runtime behavior unchanged",
+      "path": "src/control_evidence/qwen3_vl.py"
+    },
+    {
+      "decision": "supported PyMuPDF import removes deprecated fitz stdout contamination from machine-readable CLI output",
+      "path": "src/control_evidence/documents.py"
+    },
+    {
+      "decision": "supported PyMuPDF import keeps document tests aligned with the production import surface",
+      "path": "tests/test_document_vlm.py"
+    },
+    {
+      "decision": "focused CI or local-qualification extension to validate both code areas without weakening existing gates",
+      "path": "tests/test_workflows.py"
+    }
+  ],
+  "schema": "model-forge-publication-integration-map-v1"
+}

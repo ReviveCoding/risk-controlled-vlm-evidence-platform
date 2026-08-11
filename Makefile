@@ -5,11 +5,12 @@ install:
 	$(PYTHON) -m pip install -e ".[api,dev]"
 test:
 	$(PYTHON) -m pytest -q
+	$(PYTHON) -m unittest discover -s examples/docvqa_risk_routing/tests -v
 lint:
 	$(PYTHON) -m ruff check .
 	$(PYTHON) -m ruff format --check .
 typecheck:
-	$(PYTHON) -m mypy src/control_evidence
+	$(PYTHON) -m mypy src/control_evidence src/model_forge
 pipeline:
 	$(PYTHON) -m control_evidence.cli full-pipeline --root . --run-id local
 validate:

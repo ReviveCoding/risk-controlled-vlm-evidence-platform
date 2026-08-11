@@ -6,7 +6,7 @@ import re
 from pathlib import Path
 from typing import Any
 
-import fitz
+import pymupdf as fitz
 
 from .documents import Candidate
 from .vlm import VLMContractError, VLMVerification
@@ -89,7 +89,8 @@ class Qwen3VLVerifier:
         )
         inputs.pop("token_type_ids", None)
         inputs = inputs.to(self.model.device)
-        generated = self.model.generate(**inputs, max_new_tokens=self.max_new_tokens)
+        generation_model: Any = self.model
+        generated = generation_model.generate(**inputs, max_new_tokens=self.max_new_tokens)
         trimmed = generated[:, inputs["input_ids"].shape[1] :]
         text = self.processor.batch_decode(trimmed, skip_special_tokens=True)[0]
         return VLMVerification.model_validate(parse_single_json_object(text))

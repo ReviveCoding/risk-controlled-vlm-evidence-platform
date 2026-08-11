@@ -48,8 +48,9 @@ jobs:
       - run: python -m pip check
       - run: python -m ruff check .
       - run: python -m ruff format --check .
-      - run: python -m mypy src/control_evidence
-      - run: python -m pytest --cov=control_evidence --cov-report=term-missing --cov-report=xml --cov-fail-under=80
+      - run: python -m mypy src/control_evidence src/model_forge
+      - run: python -m pytest --cov=control_evidence --cov=model_forge --cov-report=term-missing --cov-report=xml --cov-fail-under=80
+      - run: python -m unittest discover -s examples/docvqa_risk_routing/tests -v
       - run: python -m control_evidence.cli full-pipeline --root .ci-run --run-id linux-${{ matrix.python-version }}
       - name: Upload test evidence
         if: always()
@@ -93,8 +94,9 @@ jobs:
       - run: python -m pip check
       - run: python -m ruff check .
       - run: python -m ruff format --check .
-      - run: python -m mypy src/control_evidence
+      - run: python -m mypy src/control_evidence src/model_forge
       - run: python -m pytest -q
+      - run: python -m unittest discover -s examples/docvqa_risk_routing/tests -v
       - run: python -m control_evidence.cli full-pipeline --root .ci-run --run-id windows-${{ matrix.python-version }}
       - name: Upload Windows evidence
         if: always()
@@ -191,6 +193,7 @@ jobs:
       - run: |
           expected_version="$(python -c 'import tomllib; print(tomllib.load(open("pyproject.toml", "rb"))["project"]["version"])')"
           test "$(/tmp/wheel-smoke/bin/control-evidence version)" = "$expected_version"
+          /tmp/wheel-smoke/bin/model-forge --help >/dev/null
       - working-directory: /tmp
         run: /tmp/wheel-smoke/bin/control-evidence full-pipeline --root /tmp/wheel-run --run-id ci-wheel
       - working-directory: /tmp

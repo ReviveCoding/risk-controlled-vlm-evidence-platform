@@ -73,8 +73,9 @@ run_step repository-integrity python scripts/repository_integrity.py --root .
 run_step pip-check python -m pip check
 run_step ruff python -m ruff check .
 run_step format python -m ruff format --check .
-run_step mypy python -m mypy src/control_evidence
-run_step tests-round-1 python -m pytest --cov=control_evidence --cov-report=term-missing --cov-report=json:reports/coverage.json --cov-fail-under=80 -q
+run_step mypy python -m mypy src/control_evidence src/model_forge
+run_step tests-round-1 python -m pytest --cov=control_evidence --cov=model_forge --cov-report=term-missing --cov-report=json:reports/coverage.json --cov-fail-under=80 -q
+run_step docvqa-tests python -m unittest discover -s examples/docvqa_risk_routing/tests -v
 if [[ "$PROFILE" != "core" ]]; then run_step tests-round-2 python -m pytest -q; fi
 rounds=2; [[ "$PROFILE" != "core" ]] && rounds=3
 for index in $(seq 1 "$rounds"); do

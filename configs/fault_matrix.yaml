@@ -1,0 +1,17 @@
+schema_version: "1.0"
+severities: [moderate, severe]
+seeds: [17, 29, 41, 53, 67]
+safe_cases: 40
+families:
+  - post_outcome_feature
+  - future_row_leakage
+  - duplicate_split_entity
+  - final_test_preprocessor_fit
+  - critical_slice_regression
+  - calibration_regression
+  - seed_instability
+  - embedding_revision_mismatch
+  - corrupt_artifact
+  - latency_regression
+  - distribution_drift
+  - missing_evidence

@@ -1,0 +1,13 @@
+resources:
+  jobs:
+    model_forge_r_fixture:
+      name: model-forge-r-fixture
+      tasks:
+        - task_key: fixture
+          spark_python_task:
+            python_file: ../src/model_forge/databricks_entrypoint.py
+          environment_key: default
+      environments:
+        - environment_key: default
+          spec:
+            client: "1"

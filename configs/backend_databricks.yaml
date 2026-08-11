@@ -1,0 +1,13 @@
+schema_version: "1.0"
+backend: databricks
+catalogs:
+  dev: mfr_dev
+  staging: mfr_staging
+  prod: mfr_prod
+  control: mfr_control
+model_name: model_forge_r.complaint_risk
+registry_uri: databricks-uc
+limitations:
+  - credentialed execution not required for local acceptance
+  - logical namespaces do not prove physical isolation in Free Edition
+  - Champion alias changes require explicit approval

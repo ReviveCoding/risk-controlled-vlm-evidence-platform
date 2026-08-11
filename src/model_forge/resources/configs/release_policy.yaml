@@ -1,0 +1,30 @@
+schema_version: "1.0"
+policy_version: "1.2.0"
+primary_metric: pr_auc
+primary_practical_margin: -0.002
+primary_lcb_margin: -0.010
+critical_slice_min_delta: -0.030
+critical_slice_lcb_margin: -0.045
+max_ece_delta: 0.025
+max_latency_ratio: 1.30
+max_seed_std: 0.020
+max_drift_score: 0.30
+min_critical_slice_n: 50
+min_critical_slice_positives: 10
+min_critical_slice_negatives: 10
+max_ci_width: 0.080
+min_evidence_score: 0.75
+health_promote: -0.25
+health_reject: -1.50
+softmin_beta: 3.0
+drift_penalty: 0.80
+seed_penalty: 8.0
+reference_window: 8
+review_capacity: 0.20
+hard_checks:
+  - schema_valid
+  - signature_present
+  - artifact_checksum_valid
+  - no_forbidden_features
+  - split_isolated
+  - candidate_selected_on_validation

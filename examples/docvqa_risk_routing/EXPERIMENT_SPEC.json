@@ -1,0 +1,133 @@
+{
+  "spec_version": "docvqa-offline-risk-routing-v1",
+  "phase": "A_IMPLEMENTATION_ONLY",
+  "seed": 20260808,
+  "input": {
+    "allowed": "v0.2.1 full baseline predictions.jsonl",
+    "approved_sha256": "cf0157f4b52b330e2d9f024fd74267c44db1a2a1cf15602f87d435912eef7efb",
+    "candidate_data_forbidden": true,
+    "rejected_candidate_sha256": "32a69e7c75e0a44bbe110e3294303031216daea23a87274c5a1ec098b5cd671b",
+    "rejected_candidate_policy": "unconditional hash denial in production and synthetic-test input paths",
+    "native_test_policy": "untouched"
+  },
+  "prompt_candidate_gate": {
+    "status": "VERIFIED_EXISTING_REJECTED_RECORD",
+    "rejection_record_sha256": "e12681ca55b3ec93bcaee1d01d8bc6ac9cb7d6f70cdec3e2208da49878944bc0",
+    "source_decision": "DO_NOT_ADVANCE",
+    "eligible_for_risk_routing": false
+  },
+  "split": {
+    "group_key": "ucsf_document_id",
+    "ratios": {"train": 0.6, "calibration": 0.2, "test": 0.2},
+    "assignment": "documents sorted by sha256(seed + ':' + document_id)",
+    "overlap_policy": "fail",
+    "test_policy": "labels unavailable to model selection, feature selection, hyperparameter selection, calibration-method selection, and threshold selection",
+    "label_free_admission_required_fields": ["question_id", "ucsf_document_id", "question", "prediction", "confidence_raw", "token_count"],
+    "label_free_admission_reporting_fields_when_present": ["page_id", "question_types", "latency_seconds", "source_shard", "source_row", "model_id", "model_revision", "contract_sha256", "contract_version"],
+    "ground_truth_isolation": "answers and all other non-allowlisted top-level values are skipped without decoding into admission rows; train/calibration answers are selectively materialized for their assigned documents; test answers are first materialized after the exclusive STARTED marker"
+  },
+  "endpoints": {
+    "em_error": "1 if Exact Match is false, else 0",
+    "anls_zero": "1 if thresholded ANLS equals 0, else 0",
+    "severity_only": "1 - ANLS; never a training endpoint in Phase A"
+  },
+  "features": {
+    "allowed": [
+      "confidence_raw",
+      "clipped_confidence_logit",
+      "output_character_length",
+      "output_word_length",
+      "output_line_length",
+      "generated_continuation_token_id_length_from_baseline_token_count",
+      "question_character_length",
+      "question_word_length",
+      "expected_answer_form_from_question_text_only",
+      "predefined_confidence_by_output_length_interaction",
+      "predefined_confidence_by_question_length_interaction"
+    ],
+    "forbidden": [
+      "answers",
+      "exact_match",
+      "anls",
+      "ground_truth_answer_length",
+      "ground_truth_derived_features",
+      "question_types"
+    ],
+    "question_types_provenance": "dataset annotation copied from the validation Parquet row; unavailable without annotation at inference time; reporting only",
+    "token_count_provenance": "number of token IDs in generated.sequences[0, input_length:]; excludes prompt token IDs but may include generated special-token IDs such as EOS because counting occurs before decoding with skip_special_tokens=True; tokenized by the frozen Qwen3-VL AutoProcessor tokenizer"
+  },
+  "benchmarks": ["constant_train_prevalence", "one_minus_confidence_raw", "combined_risk_model"],
+  "selection": {
+    "scope": "train only",
+    "cv": "5-fold GroupKFold by ucsf_document_id",
+    "base_candidates": [
+      "StandardScaler + LogisticRegression(C in [0.1, 1.0, 10.0], penalty='l2', solver='lbfgs')",
+      "HistGradientBoostingClassifier(max_leaf_nodes in [7, 15])"
+    ],
+    "calibration_method_candidates": ["platt", "isotonic"],
+    "platt_estimator": "LogisticRegression(C=1e6, penalty='l2', solver='lbfgs', max_iter=2000, random_state=20260808)",
+    "calibration_method_selection": "true nested document-group CV: inner GroupKFold creates calibrator-training OOF predictions inside each outer-train; outer-validation labels are used only for final candidate-pair Brier scoring",
+    "fold_class_policy": "fail the entire nested selection before candidate scoring if any outer-train or inner-train fit partition lacks either class; single-class outer-validation is allowed because Brier is defined",
+    "selection_metric": "Brier score with deterministic lexical tie-breaking"
+  },
+  "calibration": {
+    "scope": "calibration split only after train selection is frozen",
+    "uses": ["fit selected probability calibrator", "set 80-percent auto-processing threshold"],
+    "operating_threshold": "80th percentile calibrated risk using deterministic sorted index; test applies the scalar threshold unchanged"
+  },
+  "evaluation": {
+    "scope": "test once in Phase B; test answers are first materialized only after exclusive creation of TEST_EVALUATION_STARTED.json",
+    "ece": {"bins": 15, "method": "equal-width", "range": [0.0, 1.0]},
+    "metrics": [
+      "Brier",
+      "ECE",
+      "AUROC",
+      "AUPRC",
+      "error capture at review budgets 5%, 10%, 20%",
+      "coverage-risk curve",
+      "AURC",
+      "80% rank-based auto subset EM error rate",
+      "80% rank-based auto subset ANLS-zero rate",
+      "80% rank-based auto subset mean ANLS and mean 1-ANLS",
+      "calibration-threshold test coverage and the same selective metrics"
+    ],
+    "rank_tie_break": "ascending risk then question_id for auto-processing; descending risk then question_id for review",
+    "aurc_discrete_definition": "For n test items sorted from lowest to highest predicted risk, AURC = (1/n) * sum over k=1..n of the mean endpoint error among the first k items; no trapezoidal interpolation is used.",
+    "bootstrap": {
+      "unit": "ucsf_document_id",
+      "replicates": 2000,
+      "confidence_level": 0.95,
+      "paired_difference": "combined minus confidence-only on identical resampled documents",
+      "interval_reporting": "every interval records requested_replicates and valid_replicates; undefined replicates are counted, not silently hidden"
+    },
+    "test_markers": {
+      "started": "Within this Phase B invocation, exclusive-create immediately before the first test ground-truth materialization; before this marker, source bytes may be hashed and top-level JSON syntax lexically scanned, but the Phase B pipeline does not decode or materialize a test answer value and does not compute a derived test endpoint label",
+      "completed": "exclusive-create after test metrics are written",
+      "retry_policy": "STARTED without COMPLETED blocks automatic retry"
+    }
+  },
+  "phase_a_constraints": {
+    "synthetic_end_to_end_only": true,
+    "real_baseline_allowed_operations": ["label-free allowlisted schema validation", "feature availability", "feature provenance"],
+    "inspector_ground_truth_policy": {
+      "answer_key_presence_checked_lexically": true,
+      "answer_value_decoded": false,
+      "answer_value_materialized": false,
+      "answer_value_schema_validated": false,
+      "endpoint_labels_computed": false,
+      "label_based_metrics_computed": false
+    },
+    "real_fit_forbidden": true,
+    "real_calibration_forbidden": true,
+    "real_test_evaluation_forbidden": true,
+    "initial_split_manifest_is_label_free": true,
+    "cuda_environment_changes_forbidden": true
+  },
+  "source_transaction": {
+    "manifest_entry_policy": "exactly the 13 approved source/spec/test paths; missing and extra entries fail",
+    "staging_policy": "same-parent staging directory on the final output volume",
+    "commit_policy": "supported Windows runner uses atomic non-overwrite os.rename; an existing or concurrently created final destination fails",
+    "pre_marker_failure": "remove staging",
+    "post_marker_failure": "preserve staging and STARTED; automatic retry forbidden"
+  }
+}

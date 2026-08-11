@@ -1,0 +1,32 @@
+schema_version: "1.0"
+project_id: model_forge_r_mep
+seed: 20260717
+seed_set: [17, 29, 41, 53, 67]
+fixture_rows: 3200
+output_root: outputs
+data_contract: configs/data_contract.yaml
+release_policy: configs/release_policy.yaml
+fault_matrix: configs/fault_matrix.yaml
+workload_contract: configs/workloads/cfpb_untimely_response.yaml
+workloads:
+  W0:
+    type: prevalence
+  W1:
+    type: tfidf_structured_logistic
+    word_features: 3000
+    char_features: 2000
+    C: 1.0
+    max_iter: 500
+  W2:
+    type: sparse_text_structured_logistic
+    word_features: 20000
+    char_features: 10000
+    C: 0.5
+    max_iter: 500
+calibration:
+  method: platt
+review_capacities: [0.05, 0.10, 0.20, 0.30]
+primary_review_capacity: 0.20
+bootstrap_resamples: 400
+full_protocol_bootstrap_resamples: 2000
+threads: 1

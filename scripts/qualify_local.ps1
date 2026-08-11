@@ -51,8 +51,9 @@ try {
     Invoke-Step "pip-check" @("python","-m","pip","check")
     Invoke-Step "ruff" @("python","-m","ruff","check",".")
     Invoke-Step "format" @("python","-m","ruff","format","--check",".")
-    Invoke-Step "mypy" @("python","-m","mypy","src/control_evidence")
-    Invoke-Step "tests-round-1" @("python","-m","pytest","--cov=control_evidence","--cov-report=term-missing","--cov-report=json:reports/coverage.json","--cov-fail-under=80","-q")
+    Invoke-Step "mypy" @("python","-m","mypy","src/control_evidence","src/model_forge")
+    Invoke-Step "tests-round-1" @("python","-m","pytest","--cov=control_evidence","--cov=model_forge","--cov-report=term-missing","--cov-report=json:reports/coverage.json","--cov-fail-under=80","-q")
+    Invoke-Step "docvqa-tests" @("python","-m","unittest","discover","-s","examples/docvqa_risk_routing/tests","-v")
     if ($Profile -ne "core") { Invoke-Step "tests-round-2" @("python","-m","pytest","-q") }
     $Rounds = if ($Profile -eq "core") { 2 } else { 3 }
     for ($Index=1; $Index -le $Rounds; $Index++) { Invoke-Step "pipeline-round-$Index" @("python","-m","control_evidence.cli","full-pipeline","--root","reports/qualification_work/smoke-$Index","--run-id","qualification") }
