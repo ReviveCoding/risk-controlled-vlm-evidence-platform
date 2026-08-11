@@ -1,0 +1,33 @@
+schema_version: "1.0"
+dataset_id: sec_fsds_primary_financial_statements_2025q1_2026q1
+parser_version: sec-fsds-v1.2
+required_quarters: [2025q1, 2025q2, 2025q3, 2025q4, 2026q1]
+members:
+  submissions: sub.txt
+  numbers: num.txt
+  presentations: pre.txt
+  tags: tag.txt
+columns:
+  submissions: [adsh, cik, name, sic, countryba, stprba, cityba, zipba, bas1, bas2, baph, countryma, stprma, cityma, zipma, mas1, mas2, countryinc, stprinc, ein, former, changed, afs, wksi, fye, form, period, fy, fp, filed, accepted, prevrpt, detail, instance, nciks, aciks]
+  numbers: [adsh, tag, version, ddate, qtrs, uom, segments, coreg, value, footnote]
+  presentations: [adsh, report, line, stmt, inpth, rfile, tag, version, plabel, negating]
+  tags: [tag, version, custom, abstract, datatype, iord, crdr, tlabel, doc]
+primary_keys:
+  submissions: [adsh]
+  numbers: [adsh, tag, version, ddate, qtrs, uom, segments, coreg]
+  presentations: [adsh, report, line]
+  tags: [tag, version]
+allowed_source_conflict_columns:
+  submissions: []
+  numbers: [value]
+  presentations: []
+  tags: []
+max_source_conflicts:
+  submissions: 0
+  numbers: 150
+  presentations: 0
+  tags: 0
+max_archive_bytes: 5368709120
+max_member_bytes: 10737418240
+max_total_uncompressed_bytes: 21474836480
+max_compression_ratio: 2000

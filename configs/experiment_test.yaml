@@ -1,0 +1,20 @@
+schema_version: "1.0"
+project_id: model_forge_r_mep_test
+seed: 20260717
+seed_set: [17]
+fixture_rows: 1400
+output_root: outputs
+data_contract: configs/data_contract.yaml
+release_policy: configs/release_policy.yaml
+fault_matrix: configs/fault_matrix.yaml
+workload_contract: configs/workloads/cfpb_untimely_response_test.yaml
+workloads:
+  W0: {type: prevalence}
+  W1: {type: tfidf_structured_logistic, word_features: 900, char_features: 600, C: 1.0, max_iter: 500}
+  W2: {type: sparse_text_structured_logistic, word_features: 1000, char_features: 700, C: 0.5, max_iter: 500}
+calibration: {method: platt}
+review_capacities: [0.05, 0.10, 0.20, 0.30]
+primary_review_capacity: 0.20
+bootstrap_resamples: 60
+full_protocol_bootstrap_resamples: 120
+threads: 1

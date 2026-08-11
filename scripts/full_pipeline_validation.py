@@ -115,8 +115,21 @@ def main() -> int:
     checks["pip_check"]["required_in_this_environment"] = False
     checks["ruff"] = run([sys.executable, "-m", "ruff", "check", "."], timeout=120)
     checks["format"] = run([sys.executable, "-m", "ruff", "format", "--check", "."], timeout=120)
-    checks["mypy"] = run([sys.executable, "-m", "mypy", "src/control_evidence"], timeout=180)
+    checks["mypy"] = run(
+        [sys.executable, "-m", "mypy", "src/control_evidence", "src/model_forge"], timeout=180
+    )
     checks["tests"] = run([sys.executable, "-m", "pytest", "-q"])
+    checks["docvqa_tests"] = run(
+        [
+            sys.executable,
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "examples/docvqa_risk_routing/tests",
+            "-v",
+        ]
+    )
     with tempfile.TemporaryDirectory() as first, tempfile.TemporaryDirectory() as second:
         first_root = Path(first)
         second_root = Path(second)
@@ -175,6 +188,7 @@ def main() -> int:
         checks["format"],
         checks["mypy"],
         checks["tests"],
+        checks["docvqa_tests"],
         checks["pipeline_first"],
         checks["pipeline_second"],
         checks["sbom"],

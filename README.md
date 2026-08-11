@@ -1,4 +1,4 @@
-# Risk-Controlled VLM Evidence Platform
+# Risk-Controlled VLM Evidence Platform / ModelForge-R
 
 <!-- README_BADGES_START -->
 [![CI](https://github.com/ReviveCoding/risk-controlled-vlm-evidence-platform/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/ReviveCoding/risk-controlled-vlm-evidence-platform/actions/workflows/ci.yml)
@@ -7,7 +7,23 @@
 
 Version: 0.7.1
 
-A reliability-first platform for converting document and VLM evidence into risk-aware automated decisions. The system validates evidence integrity, estimates operational risk, routes high-risk cases to constrained human review, and publishes auditable experiment artifacts.
+A reliability-first platform for evidence assessment, risk-aware decision routing, and auditable model experimentation. The repository preserves the original synthetic held-out demonstration while adding the portable ModelForge-R package and a public-safe DocVQA risk-routing research example.
+
+The single authoritative scientific document is [MODEL_FORGE_R_FINAL_REPORT.md](MODEL_FORGE_R_FINAL_REPORT.md). Datasets, model weights, predictions, protected metrics payloads, and execution workspaces are deliberately excluded.
+
+## Install and quick start
+
+Python 3.11–3.13 is supported.
+
+```bash
+python -m venv .venv
+python -m pip install -e ".[api,dev,datasets]"
+model-forge demo --config src/model_forge/resources/configs/experiment_test.yaml --output ./model-forge-demo --clean
+python -m pytest -q
+python -m unittest discover -s examples/docvqa_risk_routing/tests -v
+```
+
+No dataset is bundled. Obtain DocVQA from the [official dataset page](https://site.docvqa.org/datasets/docvqa) and follow the linked Robust Reading Competition terms.
 
 ## Core Capabilities
 
@@ -88,13 +104,21 @@ Raw model binaries and held-out prediction records are intentionally excluded fr
 
 ## Verification Status
 
-- Ruff lint and formatting checks: PASS
-- Mypy: PASS
-- Pytest: 135 passed, 1 skipped
-- Windows local qualification pipeline: PASS
-- Final artifact validation: PASS
-- Promotion decision: `PROMOTE_LEARNED_ROUTER`
+- CI enforces Ruff lint and formatting, mypy, pytest, at least 80% combined package coverage, package and wheel smoke tests, dependency audit, Docker build, and CodeQL.
+- The synthetic promotion decision recorded in the public evidence is `PROMOTE_LEARNED_ROUTER`.
 
 ## Scope and Claim Boundary
 
 The results demonstrate improved risk-routing allocation against a frozen handcrafted baseline on a synthetic group-held-out operational-error benchmark. They do not claim improved real-world VLM accuracy, production deployment, or customer-facing impact.
+
+The DocVQA evidence is separate: Phase B findings are development-only, Phase C is post-hoc/exploratory, and Phase D produced no confirmatory scientific metrics. Phase D label-blind inference completed and predictions were sealed, but the one-shot evaluation terminated after its irreversible start boundary because at least one selected row lacked a valid reference answer. Phase D performance remains not estimable and no directional confirmatory claim was established.
+
+## Repository map
+
+- `src/control_evidence/` — evidence validation, routing, transactional publication, and API components.
+- `src/model_forge/` — ModelForge-R experimentation and release-decision framework.
+- `tests/` — deterministic offline-safe tests for both packages.
+- `examples/docvqa_risk_routing/` — public-safe DocVQA specification, implementation, and synthetic tests.
+- `configs/` — repository-readable ModelForge-R configurations; equivalent packaged defaults live under `src/model_forge/resources/`.
+- `reports/final_run/` — compact synthetic public evidence only.
+- `MODEL_FORGE_R_FINAL_REPORT.md` — authoritative study report and provenance boundary.

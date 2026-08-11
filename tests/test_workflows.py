@@ -33,6 +33,10 @@ def test_ci_has_manual_trigger_concurrency_timeouts_and_platform_matrix():
     assert "bash scripts/qualify_local.sh standard" in content
     assert "persist-credentials: false" in content
     assert "pip-audit --strict" in content
+    assert "python -m mypy src/control_evidence src/model_forge" in content
+    assert "--cov=control_evidence --cov=model_forge" in content
+    assert "python -m unittest discover -s examples/docvqa_risk_routing/tests -v" in content
+    assert "/tmp/wheel-smoke/bin/model-forge --help" in content
 
 
 def test_codeql_uses_minimum_permissions_and_current_major():

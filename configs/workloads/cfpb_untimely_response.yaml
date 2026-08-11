@@ -1,0 +1,79 @@
+contract_version: "1.1"
+workload_name: cfpb_untimely_response
+task_family: binary_classification
+evidence_status: real_data_available
+source:
+  kind: official_cfpb_csv
+  manifest_required: true
+  contains_public_narratives: true
+  cutoff: "2026-03-15"
+unit_id: complaint_id
+event_time: date_sent_to_company
+target:
+  source_field: Timely response?
+  mapped_field: untimely_response
+  positive_value: "No"
+  negative_value: "Yes"
+  positive_class: untimely response
+allowed_feature_timing:
+  as_of: date_sent_to_company
+  label_maturity_days: 60
+  forbidden_fields: [company_response_to_consumer, timely_response, consumer_disputed, untimely_response]
+split_boundaries:
+  train: ["2019-01-01", "2023-12-31"]
+  validation: ["2024-01-01", "2024-06-30"]
+  calibration_policy: ["2024-07-01", "2024-12-31"]
+  locked_final_test: ["2025-01-01", "2025-12-31"]
+  prospective_stress: ["2026-01-01", "2026-12-31"]
+primary_seed: 20260717
+seed_list: [17, 29, 41, 53, 67]
+candidates:
+  W0:
+    role: sanity
+    definition: {type: prevalence}
+  W1:
+    role: industry
+    definition: {type: tfidf_structured_logistic, word_features: 3000, char_features: 2000, C: 1.0, max_iter: 500}
+  W2:
+    role: advanced
+    definition: {type: sparse_text_structured_logistic, word_features: 20000, char_features: 10000, C: 0.5, max_iter: 500}
+calibration_policy: {partition: calibration_policy, method: platt}
+threshold_policy: {partition: calibration_policy, method: exact_batch_top_k}
+metrics:
+  primary: pr_auc
+  secondary: [roc_auc, log_loss, brier, ece, precision, recall, specificity, f1, review_rate]
+slices: [product, issue, state_audit_only, submitted_via, narrative_present, company_volume, temporal]
+slice_membership_definitions:
+  product: {kind: direct_string, source_field: product}
+  issue: {kind: direct_string, source_field: issue}
+  state_audit_only: {kind: direct_string, source_field: state}
+  submitted_via: {kind: direct_string, source_field: submitted_via}
+  narrative_present: {kind: nonempty_string_presence, source_field: complaint_narrative, true_label: present, false_label: absent}
+  company_volume: {kind: population_frequency_binary, source_field: company, rare_below: 30, rare_label: rare, common_label: common}
+  temporal:
+    definition_id: cfpb-temporal-calendar-year-month-v1
+    kind: utc_calendar_year_month
+    source_field: date_sent_to_company
+    timezone: UTC
+    label_format: YYYY-MM
+    boundaries: inclusive_month_start_exclusive_next_month_start
+    cross_year_behavior: distinct_year_month
+    invalid_value_action: contract_error
+minimum_slice_support: {rows: 50, positives: 10, negatives: 10}
+operational_limits: {max_latency_ratio: 1.30, bounded_threads: 1}
+review_capacity_limit: 0.20
+qualification_policies: [C0, C1, C2, C3, C4]
+artifact_requirements:
+  governed_required_count: 21
+  deterministic_replay_count: 12
+  manifest_verification_required: true
+  artifact_reload_required: true
+claim_boundaries:
+  - W2 predictive superiority does not authorize production promotion.
+  - W1 remains the production champion until every configured release gate passes.
+  - Public CFPB complaints are not representative of all United States consumers.
+  - The workload is research evidence and must not be used for consumer adverse actions.
+  - Fixture and fault-benchmark evidence is synthetic, not CFPB production evidence.
+data_contract: configs/data_contract.yaml
+experiment_contract: configs/experiment_contract.yaml
+release_policy: configs/release_policy.yaml

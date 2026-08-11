@@ -1,0 +1,38 @@
+{
+  "contract_version": "docvqa-qwen3vl-v0.2.0",
+  "dataset": {
+    "split": "validation",
+    "expected_shards": 6,
+    "expected_questions": 5349,
+    "expected_pages": 1286,
+    "expected_documents": 938,
+    "assignment_key": "ucsf_document_id",
+    "native_test_policy": "untouched"
+  },
+  "model": {
+    "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+    "dtype": "bfloat16",
+    "attention": "sdpa",
+    "device": "cuda",
+    "batch_size": 1
+  },
+  "image": {
+    "min_pixels": 200704,
+    "max_pixels": 1003520
+  },
+  "generation": {
+    "do_sample": false,
+    "max_new_tokens": 64,
+    "prompt": "Answer the question using only the document image. Return only the shortest answer span, with no explanation. Question: {question}"
+  },
+  "evaluation": {
+    "primary_metric": "ANLS",
+    "anls_threshold": 0.5,
+    "bootstrap_unit": "ucsf_document_id",
+    "bootstrap_replicates": 2000,
+    "bootstrap_seed": 20260804,
+    "prior_contract_sha256": "448d7080a58f951b00d5879784b522037bf8153a72fa19f6461f6e42cac6995e",
+    "prior_internal_holdout_questions": 1126,
+    "prior_internal_holdout_anls": 0.12294
+  }
+}
