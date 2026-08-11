@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import argparse
+import ctypes
+import errno
 import json
 import math
 import os
@@ -506,12 +508,34 @@ def _atomic_rename_no_overwrite(staging: Path, output_dir: Path) -> None:
         raise AssertionError("Staging and final output must share the same parent")
     if output_dir.exists():
         raise FileExistsError(f"Refusing to overwrite Phase B output: {output_dir}")
-    if os.name != "nt":
-        raise RuntimeError("Atomic non-overwrite directory commit is currently implemented only for Windows")
-    # Windows MoveFile semantics used by os.rename are atomic on one volume and
-    # fail when the destination already exists; unlike os.replace, they do not
-    # overwrite a concurrently created final output.
-    os.rename(staging, output_dir)
+    if os.name == "nt":
+        # Windows MoveFile semantics used by os.rename are atomic on one volume
+        # and fail when the destination already exists; unlike os.replace, they
+        # do not overwrite a concurrently created final output.
+        os.rename(staging, output_dir)
+        return
+    if sys.platform == "linux":
+        # Linux renameat2 with RENAME_NOREPLACE provides the same atomic,
+        # race-free non-overwrite commit guarantee. Fail closed on kernels or
+        # filesystems that do not support it.
+        libc = ctypes.CDLL(None, use_errno=True)
+        renameat2 = libc.renameat2
+        renameat2.argtypes = [ctypes.c_int, ctypes.c_char_p, ctypes.c_int, ctypes.c_char_p, ctypes.c_uint]
+        renameat2.restype = ctypes.c_int
+        result = renameat2(
+            -100,
+            os.fsencode(staging),
+            -100,
+            os.fsencode(output_dir),
+            1,
+        )
+        if result == 0:
+            return
+        error_number = ctypes.get_errno()
+        if error_number == errno.EEXIST:
+            raise FileExistsError(f"Refusing to overwrite Phase B output: {output_dir}")
+        raise OSError(error_number, os.strerror(error_number), output_dir)
+    raise RuntimeError("Atomic non-overwrite directory commit is unsupported on this platform")
 
 
 def materialize_test_ground_truth(predictions: Path, test_admission_rows: list[dict]) -> list[dict]:

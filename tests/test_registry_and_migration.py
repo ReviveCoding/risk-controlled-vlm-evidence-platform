@@ -35,15 +35,24 @@ class RegistryMigrationTests(unittest.TestCase):
 
             environment = os.environ.copy()
             environment["MODEL_FORGE_ACL_PATH"] = str(version_dir)
+            environment["MODEL_FORGE_ACL_PARENT"] = str(registry.versions)
 
             acl_script = r"""
 $acl = Get-Acl -LiteralPath $env:MODEL_FORGE_ACL_PATH
+$parentAcl = Get-Acl -LiteralPath $env:MODEL_FORGE_ACL_PARENT
+$containerInherit = [System.Security.AccessControl.InheritanceFlags]::ContainerInherit
 
 [pscustomobject]@{
     protected = [bool]$acl.AreAccessRulesProtected
     inherited_count = @(
         $acl.Access |
             Where-Object { $_.IsInherited }
+    ).Count
+    parent_inheritable_count = @(
+        $parentAcl.Access |
+            Where-Object {
+                ($_.InheritanceFlags -band $containerInherit) -ne 0
+            }
     ).Count
 } | ConvertTo-Json -Compress
 """
@@ -65,6 +74,10 @@ $acl = Get-Acl -LiteralPath $env:MODEL_FORGE_ACL_PATH
             acl = json.loads(completed.stdout.strip())
 
             self.assertFalse(acl["protected"])
+            if acl["parent_inheritable_count"] == 0:
+                self.assertEqual(acl["inherited_count"], 0)
+                print("WINDOWS_ACL_HOST_POLICY_UNAVAILABLE: parent exposes no inheritable ACE")
+                return
             self.assertGreater(
                 acl["inherited_count"],
                 0,

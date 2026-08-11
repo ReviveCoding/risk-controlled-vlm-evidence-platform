@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-import fitz
+import pymupdf as fitz
 import pytest
 
 from control_evidence.decision import assess

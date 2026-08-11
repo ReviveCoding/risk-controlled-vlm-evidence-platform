@@ -130,9 +130,9 @@
     },
     {
       "candidate_sha256": "315a5a963a7e4d449cb51db668019da8f482a5622523a48a750fb02231cb6363",
-      "integrated_sha256": "4847d26c4f56f5f32c5448dddc6b9af69a8969a10d1e740fdc5321b5c72d9d41",
+      "integrated_sha256": "96c411d3430c693a5a23cc960988859bd3a742277a26d78a75db0ee61997f7f5",
       "path": "examples/docvqa_risk_routing/scripts/evaluate_risk_router.py",
-      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+      "reason": "strict Ruff integration plus Linux atomic renameat2 non-overwrite portability"
     },
     {
       "candidate_sha256": "377cf47ce3d2bce0507579cc8f4ab69b1575574da66c0ce12eafaa7bb6379327",
@@ -160,9 +160,9 @@
     },
     {
       "candidate_sha256": "73d11bbbbc406b196902dcc3f81fd9ab51ee29e46918b1261d9299412ac866c4",
-      "integrated_sha256": "fbbc0ca098fbd9d7f8fbd8c20b00d606540d5f927931c370da26c2c5fd44fd2b",
+      "integrated_sha256": "63e381d4ee46d806902a143aff71107c71f4ede9a1ee78863e230d7f90096157",
       "path": "examples/docvqa_risk_routing/SHA256SUMS.txt",
-      "reason": "regenerated after integration formatting under preserved strict Ruff rules"
+      "reason": "regenerated after integration formatting and Linux transaction portability correction"
     },
     {
       "candidate_sha256": "38a8bbc32cdc19961192a2aafcafd1c6bab2a0f596b195ba2b0f76975371f52c",
@@ -382,9 +382,9 @@
     },
     {
       "candidate_sha256": "7f642b927747a17232366ac56ec0ed22e1fca52c71b5239d15534518619e38ee",
-      "integrated_sha256": "cb0d33d132e93e362b4474df346a41f420db037328be3e3105a396cf627498fa",
+      "integrated_sha256": "39ae7b411bdd1987bc1dbbf86d991e598fa7aea0eba4c4006bf29e5fb28e850e",
       "path": "tests/test_registry_and_migration.py",
-      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+      "reason": "strict Ruff integration plus explicit Windows ACL host-policy availability handling"
     },
     {
       "candidate_sha256": "3c18b40d454512e609d4d6273112370d99fa27dd459602bf5fab530ddf6e3659",
@@ -420,9 +420,9 @@
     "expected_final_tracked": 189,
     "integration_generated_files": 2,
     "overlap": 4,
-    "preserved_base_unchanged": 75,
+    "preserved_base_unchanged": 73,
     "proposed_deletions": 0,
-    "reconciled_base": 7
+    "reconciled_base": 9
   },
   "genuine_duplicates": [
     {
@@ -558,7 +558,6 @@
     "src/control_evidence/archive_adapters.py",
     "src/control_evidence/cli.py",
     "src/control_evidence/decision.py",
-    "src/control_evidence/documents.py",
     "src/control_evidence/learned_routing.py",
     "src/control_evidence/metrics.py",
     "src/control_evidence/pipeline.py",
@@ -572,7 +571,6 @@
     "tests/test_archive_adapters.py",
     "tests/test_cli.py",
     "tests/test_decision.py",
-    "tests/test_document_vlm.py",
     "tests/test_learned_routing.py",
     "tests/test_mutation_properties.py",
     "tests/test_pipeline_integration.py",
@@ -610,8 +608,16 @@
       "path": "scripts/qualify_local.sh"
     },
     {
-      "decision": "typing-only Any bridge for optional transformers generate method; runtime behavior unchanged",
+      "decision": "typing-only optional-transformers bridge plus supported PyMuPDF import; runtime behavior unchanged",
       "path": "src/control_evidence/qwen3_vl.py"
+    },
+    {
+      "decision": "supported PyMuPDF import removes deprecated fitz stdout contamination from machine-readable CLI output",
+      "path": "src/control_evidence/documents.py"
+    },
+    {
+      "decision": "supported PyMuPDF import keeps document tests aligned with the production import surface",
+      "path": "tests/test_document_vlm.py"
     },
     {
       "decision": "focused CI or local-qualification extension to validate both code areas without weakening existing gates",

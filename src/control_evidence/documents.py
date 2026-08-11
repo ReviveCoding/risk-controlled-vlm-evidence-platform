@@ -4,7 +4,7 @@ import json
 import re
 from pathlib import Path
 
-import fitz
+import pymupdf as fitz
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from .publication import sha256_file

@@ -6,7 +6,7 @@ import re
 from pathlib import Path
 from typing import Any
 
-import fitz
+import pymupdf as fitz
 
 from .documents import Candidate
 from .vlm import VLMContractError, VLMVerification
