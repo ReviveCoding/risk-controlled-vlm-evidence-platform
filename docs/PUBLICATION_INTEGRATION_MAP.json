@@ -160,15 +160,15 @@
     },
     {
       "candidate_sha256": "73d11bbbbc406b196902dcc3f81fd9ab51ee29e46918b1261d9299412ac866c4",
-      "integrated_sha256": "63e381d4ee46d806902a143aff71107c71f4ede9a1ee78863e230d7f90096157",
+      "integrated_sha256": "2197998db34b3e218bc03d58692aa6963d67ef59dd3386ca171540375b0d8634",
       "path": "examples/docvqa_risk_routing/SHA256SUMS.txt",
       "reason": "regenerated after integration formatting and Linux transaction portability correction"
     },
     {
       "candidate_sha256": "38a8bbc32cdc19961192a2aafcafd1c6bab2a0f596b195ba2b0f76975371f52c",
-      "integrated_sha256": "c5d08936b73250601f8eef01102b0ab2e2b9802dda676daa50d17f225d4467be",
+      "integrated_sha256": "a232e2f70e46f25a5f6e89c6929c07154009ae4ee79284febdf46780f2a2b31e",
       "path": "examples/docvqa_risk_routing/tests/test_risk_routing.py",
-      "reason": "strict Ruff autofix or formatting under preserved origin/main rules"
+      "reason": "strict Ruff integration plus Windows long-name/8.3 path identity portability"
     },
     {
       "candidate_sha256": "2a979b44019fe7d73e0e6db8d0ae51f9f18903c4a9347ceba252dadf55ebdd8a",

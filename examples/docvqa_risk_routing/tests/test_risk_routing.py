@@ -745,7 +745,7 @@ class RiskRoutingTests(unittest.TestCase):
                 bootstrap_replicates=3,
                 synthetic_test_only=True,
             )
-        self.assertEqual(result_path, output / "risk_evaluation.json")
+        self.assertTrue(result_path.samefile(output / "risk_evaluation.json"))
         self.assertTrue((output / "TEST_EVALUATION_STARTED.json").is_file())
         self.assertTrue((output / "TEST_EVALUATION_COMPLETED.json").is_file())
         self.assertTrue((output / "SHA256SUMS.txt").is_file())
