@@ -16,7 +16,7 @@ click==8.4.1
 coverage==7.14.1
 cyclonedx-python-lib==11.11.0
 defusedxml==0.7.1
-fastapi==0.137.1
+fastapi==0.138.1
 filelock==3.29.4
 h11==0.16.0
 httpcore2==2.4.0
