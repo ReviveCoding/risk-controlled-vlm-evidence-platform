@@ -53,7 +53,7 @@ jobs:
       - run: python -m control_evidence.cli full-pipeline --root .ci-run --run-id linux-${{ matrix.python-version }}
       - name: Upload test evidence
         if: always()
-        uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4.6.0
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: linux-py${{ matrix.python-version }}-evidence
           path: |
@@ -98,7 +98,7 @@ jobs:
       - run: python -m control_evidence.cli full-pipeline --root .ci-run --run-id windows-${{ matrix.python-version }}
       - name: Upload Windows evidence
         if: always()
-        uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4.6.0
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: windows-py${{ matrix.python-version }}-evidence
           path: .ci-run/outputs/runs/windows-${{ matrix.python-version }}/release_gate.json
@@ -122,7 +122,7 @@ jobs:
       - run: bash scripts/qualify_local.sh standard
       - name: Upload qualification evidence
         if: always()
-        uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4.6.0
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: qualification-manifest
           path: |
@@ -148,7 +148,7 @@ jobs:
       - run: python scripts/qualify_runtime.py --output reports/runtime_qualification.json --work-dir reports/runtime_work
       - name: Upload runtime evidence
         if: always()
-        uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4.6.0
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: runtime-network-evidence
           path: reports/runtime_qualification.json
@@ -203,7 +203,7 @@ jobs:
               assert client.get('/health').status_code == 200
               assert client.get('/ready').status_code == 200
           PY
-      - uses: actions/upload-artifact@65c4c4a1ddee5b72f698fdd19549f0f0fb45cf08 # v4.6.0
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: python-distributions
           path: dist/
