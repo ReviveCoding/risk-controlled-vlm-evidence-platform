@@ -188,7 +188,7 @@ jobs:
       - run: python -m venv /tmp/wheel-smoke
       - run: /tmp/wheel-smoke/bin/pip install dist/*.whl "fastapi>=0.137,<1" "uvicorn>=0.30,<1" "httpx2>=2.4,<3"
       - run: /tmp/wheel-smoke/bin/pip check
-      - name: Verify installed CLI version
+      - name: Verify installed control-evidence version
         shell: python
         run: |
           from pathlib import Path
