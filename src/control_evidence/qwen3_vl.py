@@ -6,7 +6,7 @@ import re
 from pathlib import Path
 from typing import Any
 
-import fitz
+import pymupdf
 
 from .documents import Candidate
 from .vlm import VLMContractError, VLMVerification
@@ -39,10 +39,10 @@ def _render_pdf_page(source_path: str, page_number: int):
     path = Path(source_path)
     if path.suffix.casefold() != ".pdf":
         raise VLMContractError("Qwen3-VL runtime currently requires a PDF candidate source")
-    with fitz.open(path) as document:
+    with pymupdf.open(path) as document:
         if page_number < 1 or page_number > document.page_count:
             raise VLMContractError("candidate page is outside the PDF")
-        pixmap = document.load_page(page_number - 1).get_pixmap(matrix=fitz.Matrix(1.5, 1.5), alpha=False)
+        pixmap = document.load_page(page_number - 1).get_pixmap(matrix=pymupdf.Matrix(1.5, 1.5), alpha=False)
         return Image.open(io.BytesIO(pixmap.tobytes("png"))).convert("RGB")
 
 

@@ -4,7 +4,7 @@ import json
 import re
 from pathlib import Path
 
-import fitz
+import pymupdf
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 from .publication import sha256_file
@@ -209,7 +209,7 @@ def _parse_text(document: LoadedDocument) -> list[ParsedBlock]:
 
 def _parse_pdf(document: LoadedDocument, max_pages: int) -> list[ParsedBlock]:
     blocks: list[ParsedBlock] = []
-    with fitz.open(document.source_path) as pdf:
+    with pymupdf.open(document.source_path) as pdf:
         if pdf.needs_pass:
             raise DocumentError("encrypted PDF is not allowed")
         if pdf.page_count < 1 or pdf.page_count > max_pages:

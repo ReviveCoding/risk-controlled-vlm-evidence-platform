@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-import fitz
+import pymupdf
 import pytest
 
 from control_evidence.decision import assess
@@ -100,7 +100,7 @@ def test_secure_manifest_json_parse_and_vlm_decision(tmp_path):
 
 def test_pdf_parser_produces_normalized_grounding(tmp_path):
     source = tmp_path / "evidence.pdf"
-    document = fitz.open()
+    document = pymupdf.open()
     page = document.new_page(width=600, height=800)
     page.insert_text((72, 100), "Policy requires immutable audit logging.")
     document.save(source)
